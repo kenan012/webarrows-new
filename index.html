@@ -6,17 +6,23 @@
   <title>WebArrows - Home</title>
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <link rel="preload" as="image" href="hero-bg.jpg" />
 </head>
 <body>
+  <!-- Sidebar Menu -->
+  <div class="sidebar" id="sidebar">
+    <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="contact.html">Contact</a>
+    <a href="#">Blog</a>
+    <a href="#" onclick="closeSidebar()">Close ✖</a>
+  </div>
+
   <header class="header">
     <div class="logo">WebArrows</div>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="services.html">Services</a>
-      <a href="contact.html">Contact</a>
-      <button id="darkToggle" class="toggle">Dark Mode</button>
-    </nav>
+    <div class="top-right">
+      <div class="language-switcher">EN | AR</div>
+      <div class="menu-toggle" onclick="openSidebar()">☰</div>
+    </div>
   </header>
 
   <section class="hero-code">
@@ -59,9 +65,12 @@
   </footer>
 
   <script>
-    document.getElementById('darkToggle').addEventListener('click', () => {
-      document.body.classList.toggle('dark');
-    });
+    function openSidebar() {
+      document.getElementById("sidebar").classList.add("sidebar-open");
+    }
+    function closeSidebar() {
+      document.getElementById("sidebar").classList.remove("sidebar-open");
+    }
   </script>
 </body>
 </html>

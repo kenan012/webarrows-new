@@ -242,3 +242,44 @@ footer {
     margin-top: 0.5rem;
   }
 }
+
+/* === LANGUAGE SWITCH + MENU TOGGLE === */
+.top-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.language-switcher {
+  color: white;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+.menu-toggle {
+  font-size: 1.5rem;
+  color: white;
+  cursor: pointer;
+}
+
+/* === SIDEBAR === */
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: -250px;
+  width: 250px;
+  height: 100%;
+  background: #0a1d46;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 1rem;
+  transition: right 0.4s ease;
+  z-index: 999;
+}
+.sidebar a {
+  color: white;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+.sidebar-open {
+  right: 0;
+}
