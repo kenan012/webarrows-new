@@ -9,74 +9,73 @@
 </head>
 <body>
 
-  <!-- Sidebar -->
-  <div class="sidebar" id="sidebar">
-    <a href="index.html">🏠 Home</a>
-    <a href="services.html">🛠 Services</a>
-    <a href="contact.html">📬 Contact</a>
-    <a href="blog.html">📰 Blog</a>
-    <a href="#" onclick="closeSidebar()">❌ Close</a>
+<!-- Sidebar -->
+<div class="sidebar" id="sidebar">
+  <a href="index.html"><i class="fas fa-home"></i> Home</a>
+  <a href="services.html"><i class="fas fa-briefcase"></i> Services</a>
+  <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+  <a href="blog.html"><i class="fas fa-newspaper"></i> Blog</a>
+  <a href="#" onclick="closeSidebar()"><i class="fas fa-times"></i> Close</a>
+</div>
+
+<!-- Header -->
+<header class="header">
+  <div class="logo">WebArrows</div>
+  <div class="top-right">
+    <div class="language-switcher">EN | AR</div>
+    <div class="menu-toggle" onclick="openSidebar()"><i class="fas fa-bars"></i></div>
   </div>
+</header>
 
-  <!-- Header -->
-  <header class="header">
-    <div class="logo">WebArrows</div>
-    <div class="top-right">
-      <div class="language-switcher">EN | AR</div>
-      <div class="menu-toggle" onclick="openSidebar()">☰</div>
-    </div>
-  </header>
+<!-- Hero -->
+<section class="hero-code">
+  <div class="hero-text">
+    <h1>Future-Ready<br>Websites for You</h1>
+    <p>Clean, professional websites built<br>in volt speed.</p>
+    <a href="https://fiverr.com/kenan_jg" class="button glow-on-hover">Start on Fiverr</a>
+  </div>
+</section>
 
-  <!-- Hero -->
-  <section class="hero-code">
-    <div class="hero-text">
-      <h1>Future-Ready<br>Websites for You</h1>
-      <p>Clean, professional websites built<br>in volt speed.</p>
-      <a href="https://fiverr.com/kenan_jg" class="button glow-on-hover">Start on Fiverr</a>
-    </div>
-  </section>
+<!-- Homepage Services -->
+<section class="home-services">
+  <h2>What We Do</h2>
+  <div class="home-cards">
+    <a href="services.html#webdesign" class="card-link">
+      <div class="card hover-scale">
+        <i class="fas fa-laptop-code icon"></i>
+        <h3>Responsive Web Design</h3>
+        <p>Fast, scalable websites that adapt to any screen.</p>
+      </div>
+    </a>
+    <a href="services.html#landingpage" class="card-link">
+      <div class="card hover-scale">
+        <i class="fas fa-bullseye icon"></i>
+        <h3>Landing Page Optimization</h3>
+        <p>High-converting landing pages with smart CTAs.</p>
+      </div>
+    </a>
+    <a href="services.html#branding" class="card-link">
+      <div class="card hover-scale">
+        <i class="fas fa-palette icon"></i>
+        <h3>Branding & Identity</h3>
+        <p>Custom logos, colors, and style systems that pop.</p>
+      </div>
+    </a>
+  </div>
+</section>
 
-  <!-- Services -->
-  <section class="home-services">
-    <h2>What We Do</h2>
-    <div class="cards">
-      <a href="services.html#webdesign" class="card-link">
-        <div class="card hover-scale">
-          <i class="fas fa-laptop-code icon"></i>
-          <h3>Responsive Web Design</h3>
-          <p>Fast, scalable websites that adapt to any screen.</p>
-        </div>
-      </a>
-      <a href="services.html#landingpage" class="card-link">
-        <div class="card hover-scale">
-          <i class="fas fa-bullseye icon"></i>
-          <h3>Landing Page Optimization</h3>
-          <p>High-converting landing pages with smart CTAs.</p>
-        </div>
-      </a>
-      <a href="services.html#branding" class="card-link">
-        <div class="card hover-scale">
-          <i class="fas fa-palette icon"></i>
-          <h3>Branding & Identity</h3>
-          <p>Custom logos, colors, and style systems that pop.</p>
-        </div>
-      </a>
-    </div>
-  </section>
+<!-- Footer -->
+<footer>
+  <p>© 2025 WebArrows</p>
+</footer>
 
-  <!-- Footer -->
-  <footer>
-    <p>© 2025 WebArrows</p>
-  </footer>
-
-  <!-- Script -->
-  <script>
-    function openSidebar() {
-      document.getElementById("sidebar").classList.add("sidebar-open");
-    }
-    function closeSidebar() {
-      document.getElementById("sidebar").classList.remove("sidebar-open");
-    }
-  </script>
+<script>
+  function openSidebar() {
+    document.getElementById("sidebar").classList.add("sidebar-open");
+  }
+  function closeSidebar() {
+    document.getElementById("sidebar").classList.remove("sidebar-open");
+  }
+</script>
 </body>
 </html>
