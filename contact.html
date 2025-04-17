@@ -18,6 +18,7 @@
     <a href="#" onclick="closeSidebar()">❌ Close</a>
   </div>
 
+  <!-- Header -->
   <header class="header">
     <div class="logo">WebArrows</div>
     <div class="top-right">
@@ -26,19 +27,21 @@
     </div>
   </header>
 
+  <!-- Hero Section -->
   <section class="hero-code">
     <div class="hero-text animate-fade-up">
-      <h1>Choose a Service</h1>
+      <h1>Our Services</h1>
       <p>Click "Read more" to view full details and questions for each service.</p>
     </div>
   </section>
 
+  <!-- Services Stack -->
   <main class="service-stack">
 
     <!-- Landing Page -->
     <div class="expand-card" onclick="toggleCard(this)">
       <div class="card-header">
-        <img src="landing.jpg" alt="Landing Page Optimization" />
+        <img src="images/landing.jpg" alt="Landing Page Optimization" />
         <div class="card-title">
           <h2>Landing Page Optimization</h2>
           <p class="price">$199</p>
@@ -64,7 +67,7 @@
     <!-- Branding -->
     <div class="expand-card" onclick="toggleCard(this)">
       <div class="card-header">
-        <img src="branding.jpg" alt="Branding & Identity" />
+        <img src="images/branding.jpg" alt="Branding & Identity" />
         <div class="card-title">
           <h2>Branding & Identity</h2>
           <p class="price">$299</p>
@@ -90,7 +93,7 @@
     <!-- Responsive Web Design -->
     <div class="expand-card" onclick="toggleCard(this)">
       <div class="card-header">
-        <img src="webdesign.jpg" alt="Responsive Web Design" />
+        <img src="images/webdesign.jpg" alt="Responsive Web Design" />
         <div class="card-title">
           <h2>Responsive Web Design</h2>
           <p class="price">$399</p>
@@ -115,10 +118,12 @@
 
   </main>
 
+  <!-- Footer -->
   <footer>
     <p>© 2025 WebArrows</p>
   </footer>
 
+  <!-- Scripts -->
   <script>
     function toggleCard(el) {
       el.classList.toggle("open");
@@ -129,6 +134,7 @@
     function openSidebar() {
       document.getElementById("sidebar").classList.add("sidebar-open");
     }
+
     function closeSidebar() {
       document.getElementById("sidebar").classList.remove("sidebar-open");
     }
