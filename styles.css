@@ -1,0 +1,244 @@
+/* === RESET & BASE === */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #fff;
+  color: #222;
+  transition: background 0.3s, color 0.3s;
+}
+a { text-decoration: none; color: inherit; }
+
+/* === HEADER === */
+.header {
+  background: #0a1d46;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem 2rem;
+}
+.logo { font-weight: 700; font-size: 1.4rem; }
+nav a {
+  color: #fff;
+  margin-left: 1.2rem;
+  font-size: 0.95rem;
+}
+.toggle {
+  background: transparent;
+  border: 1px solid white;
+  color: white;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+/* === HERO === */
+.hero-code {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 5%;
+  color: white;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.9), rgba(0,0,0,0.4), rgba(0,0,0,0)),
+              url('hero-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  animation: fadeHero 1s ease-in;
+}
+@keyframes fadeHero {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.hero-text {
+  max-width: 520px;
+  z-index: 2;
+}
+.hero-text h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+.hero-text p {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+}
+.button {
+  background: #fff;
+  color: #0a1d46;
+  padding: 0.75rem 1.5rem;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: transform 0.3s ease;
+}
+.button:hover { transform: scale(1.05); }
+
+/* === HOME PAGE CARDS === */
+.home-services {
+  background: #f9fbfd;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+.home-services h2 {
+  font-size: 2rem;
+  color: #0a1d46;
+  margin-bottom: 2.5rem;
+}
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+}
+.card {
+  background: white;
+  border-radius: 20px;
+  padding: 2rem;
+  max-width: 280px;
+  flex: 1 1 280px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.07);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+.card:hover {
+  transform: scale(1.05);
+}
+.icon {
+  font-size: 2rem;
+  color: #0a1d46;
+  margin-bottom: 1rem;
+}
+
+/* === SERVICE CARDS (EXPANDABLE) === */
+.service-stack {
+  padding: 4rem 2rem;
+  max-width: 900px;
+  margin: auto;
+}
+.expand-card {
+  background: white;
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.07);
+  margin-bottom: 2rem;
+  transition: all 0.4s ease;
+  cursor: pointer;
+  overflow: hidden;
+}
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  justify-content: space-between;
+}
+.card-header img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+.card-title {
+  flex-grow: 1;
+}
+.card-title h2 {
+  font-size: 1.2rem;
+  color: #0a1d46;
+}
+.price {
+  font-weight: bold;
+  font-size: 1rem;
+  color: #0a1d46;
+}
+.read-more {
+  font-size: 0.9rem;
+  color: #0a1d46;
+  font-weight: bold;
+}
+.card-body {
+  margin-top: 1rem;
+  transition: max-height 0.3s ease;
+}
+.card-body.hidden {
+  display: none;
+}
+.card-body h3 {
+  margin-bottom: 0.8rem;
+  font-size: 1.1rem;
+  color: #0a1d46;
+}
+.card-body ul {
+  list-style: none;
+  padding: 0;
+}
+.card-body ul li {
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
+.card-footer {
+  text-align: right;
+  margin-top: 1rem;
+}
+.footer-link {
+  font-size: 0.9rem;
+  color: #0a1d46;
+  font-weight: bold;
+}
+.expand-card.open {
+  background: #f9fbfd;
+  transform: scale(1.03);
+}
+
+/* === FOOTER === */
+footer {
+  background: #0a1d46;
+  color: white;
+  text-align: center;
+  padding: 2rem;
+  font-size: 0.85rem;
+}
+
+/* === DARK MODE === */
+.dark {
+  background: #111;
+  color: #eee;
+}
+.dark .header, .dark footer {
+  background: #000;
+}
+.dark nav a, .dark .logo, .dark .toggle {
+  color: #eee;
+  border-color: #eee;
+}
+.dark .card,
+.dark .expand-card {
+  background: #1e1e1e;
+}
+.dark .card h3,
+.dark .card p,
+.dark .expand-card h2,
+.dark .card-body h3,
+.dark .footer-link,
+.dark .price,
+.dark .card-body ul li,
+.dark .read-more {
+  color: #eee;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  .hero-text h1 { font-size: 2.4rem; }
+  .cards { flex-direction: column; align-items: center; }
+  .card-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .card-header img {
+    margin-bottom: 1rem;
+  }
+  .read-more {
+    align-self: flex-end;
+    margin-top: 0.5rem;
+  }
+}
