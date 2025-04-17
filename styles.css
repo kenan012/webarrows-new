@@ -242,3 +242,39 @@ footer {
     margin-top: 0.5rem;
   }
 }
+
+.hero-code {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 5%;
+  color: white;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.9), rgba(0,0,0,0.4), rgba(0,0,0,0)),
+              url('hero-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  animation: fadeHero 1s ease-in;
+}
+
+.button.glow-on-hover {
+  background: white;
+  color: #0a1d46;
+  padding: 0.75rem 1.5rem;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: 0.3s ease;
+  box-shadow: 0 0 0 transparent;
+}
+.button.glow-on-hover:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px #ffffffc7, 0 0 20px #fff;
+}
+
+.card h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #0a1d46;
+  margin-bottom: 0.5rem;
+}
