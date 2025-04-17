@@ -8,16 +8,26 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
 <body>
+
+  <!-- Sidebar Navigation -->
+  <div class="sidebar" id="sidebar">
+    <a href="index.html">🏠 Home</a>
+    <a href="services.html">🛠 Services</a>
+    <a href="contact.html">📬 Contact</a>
+    <a href="blog.html">📰 Blog</a>
+    <a href="#" onclick="closeSidebar()">❌ Close</a>
+  </div>
+
+  <!-- Header -->
   <header class="header">
     <div class="logo">WebArrows</div>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="services.html">Services</a>
-      <a href="contact.html">Contact</a>
-      <button id="darkToggle" class="toggle">Dark Mode</button>
-    </nav>
+    <div class="top-right">
+      <div class="language-switcher">EN | AR</div>
+      <div class="menu-toggle" onclick="openSidebar()">☰</div>
+    </div>
   </header>
 
+  <!-- Hero Section -->
   <section class="hero-code">
     <div class="hero-text animate-fade-up">
       <h1>Choose a Service</h1>
@@ -25,30 +35,31 @@
     </div>
   </section>
 
+  <!-- Services Stack -->
   <main class="service-stack">
 
     <!-- Landing Page -->
     <div class="expand-card" onclick="toggleCard(this)">
       <div class="card-header">
-        <img src="landing.jpg" alt="Landing Page Optimization" />
+        <img src="images/landing.jpg" alt="Landing Page Optimization" />
         <div class="card-title">
           <h2>Landing Page Optimization</h2>
           <p class="price">$199</p>
         </div>
-        <div class="read-more"> Read more</div>
+        <div class="read-more">📖 Read more</div>
       </div>
       <div class="card-body hidden">
         <h3>Client Info We Need:</h3>
         <ul>
-          <li>🡆 Page goal (leads, sales, etc.)</li>
-          <li>🡆 Target audience</li>
-          <li>🡆 Copy or key content</li>
-          <li>🡆 Product/service images</li>
-          <li>🡆 Analytics access</li>
-          <li>🡆 Desired launch timeline</li>
+          <li>🎯 Page goal (leads, sales, etc.)</li>
+          <li>👥 Target audience</li>
+          <li>✍️ Copy or key content</li>
+          <li>📸 Product/service images</li>
+          <li>📈 Analytics access</li>
+          <li>📆 Desired launch timeline</li>
         </ul>
         <div class="card-footer">
-          <a href="#" class="footer-link"> Go to Landing Page Optimization page</a>
+          <a href="#" class="footer-link">👉 Go to Landing Page Optimization page</a>
         </div>
       </div>
     </div>
@@ -56,25 +67,25 @@
     <!-- Branding -->
     <div class="expand-card" onclick="toggleCard(this)">
       <div class="card-header">
-        <img src="branding.jpg" alt="Branding & Identity" />
+        <img src="images/branding.jpg" alt="Branding & Identity" />
         <div class="card-title">
           <h2>Branding & Identity</h2>
           <p class="price">$299</p>
         </div>
-        <div class="read-more"> Read more</div>
+        <div class="read-more">📖 Read more</div>
       </div>
       <div class="card-body hidden">
         <h3>Client Info We Need:</h3>
         <ul>
-          <li>🡆 Business name & slogan</li>
-          <li>🡆 Brand style or vibe</li>
-          <li>🡆 Preferred colors/fonts</li>
-          <li>🡆 Design likes/dislikes</li>
-          <li>🡆 Where branding will be used</li>
-          <li>🡆 File formats needed</li>
+          <li>🏷️ Business name & slogan</li>
+          <li>💬 Brand style or vibe</li>
+          <li>🎨 Preferred colors/fonts</li>
+          <li>🖼️ Design likes/dislikes</li>
+          <li>🧩 Where branding will be used</li>
+          <li>📁 File formats needed</li>
         </ul>
         <div class="card-footer">
-          <a href="#" class="footer-link"> Go to Branding & Identity page</a>
+          <a href="#" class="footer-link">👉 Go to Branding & Identity page</a>
         </div>
       </div>
     </div>
@@ -82,35 +93,37 @@
     <!-- Responsive Web Design -->
     <div class="expand-card" onclick="toggleCard(this)">
       <div class="card-header">
-        <img src="webdesign.jpg" alt="Responsive Web Design" />
+        <img src="images/webdesign.jpg" alt="Responsive Web Design" />
         <div class="card-title">
           <h2>Responsive Web Design</h2>
           <p class="price">$399</p>
         </div>
-        <div class="read-more"> Read more</div>
+        <div class="read-more">📖 Read more</div>
       </div>
       <div class="card-body hidden">
         <h3>Client Info We Need:</h3>
         <ul>
-          <li>🡆 Business name & purpose</li>
-          <li>🡆 Brand colors, logo, fonts</li>
-          <li>🡆 Page types (Home, About, etc.)</li>
-          <li>🡆 Content (text, images)</li>
-          <li>🡆 Domain/hosting access</li>
-          <li>🡆 Deadline or launch date</li>
+          <li>📝 Business name & purpose</li>
+          <li>🎨 Brand colors, logo, fonts</li>
+          <li>📄 Page types (Home, About, etc.)</li>
+          <li>🖼️ Content (text, images)</li>
+          <li>🌐 Domain/hosting access</li>
+          <li>📅 Deadline or launch date</li>
         </ul>
         <div class="card-footer">
-          <a href="#" class="footer-link"> Go to Responsive Web Design page</a>
+          <a href="#" class="footer-link">👉 Go to Responsive Web Design page</a>
         </div>
       </div>
     </div>
 
   </main>
 
+  <!-- Footer -->
   <footer>
     <p>© 2025 WebArrows</p>
   </footer>
 
+  <!-- JS -->
   <script>
     function toggleCard(el) {
       el.classList.toggle("open");
@@ -118,9 +131,13 @@
       body.classList.toggle('hidden');
     }
 
-    document.getElementById('darkToggle').addEventListener('click', () => {
-      document.body.classList.toggle('dark');
-    });
+    function openSidebar() {
+      document.getElementById("sidebar").classList.add("sidebar-open");
+    }
+
+    function closeSidebar() {
+      document.getElementById("sidebar").classList.remove("sidebar-open");
+    }
   </script>
 </body>
 </html>
