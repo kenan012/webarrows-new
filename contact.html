@@ -10,6 +10,24 @@
 <body>
 
   <!-- Sidebar Navigation -->
+<div class="sidebar" id="sidebar">
+  <a href="index.html"><i class="fas fa-home"></i> Home</a>
+  <a href="services.html"><i class="fas fa-briefcase"></i> Services</a>
+  <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
+  <a href="blog.html"><i class="fas fa-newspaper"></i> Blog</a>
+  <a href="#" onclick="closeSidebar()"><i class="fas fa-times"></i> Close</a>
+</div>
+
+<!-- Header -->
+<header class="header">
+  <div class="logo">WebArrows</div>
+  <div class="top-right">
+    <div class="language-switcher">EN | AR</div>
+    <div class="menu-toggle" onclick="openSidebar()"><i class="fas fa-bars"></i></div>
+  </div>
+</header>
+
+  <!-- Sidebar Navigation -->
   <div class="sidebar" id="sidebar">
     <a href="index.html">🏠 Home</a>
     <a href="services.html">🛠 Services</a>
@@ -140,4 +158,22 @@
     }
   </script>
 </body>
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 WebArrows</p>
+  </footer>
+
+  <!-- 👇 PASTE THIS RIGHT HERE -->
+  <script>
+    function openSidebar() {
+      document.getElementById("sidebar").classList.add("sidebar-open");
+    }
+    function closeSidebar() {
+      document.getElementById("sidebar").classList.remove("sidebar-open");
+    }
+  </script>
+
+</body>
+</html>
+
 </html>
