@@ -10,23 +10,23 @@
       font-family: 'Segoe UI', sans-serif;
       margin: 0;
       padding: 0;
-      background: #ffffff;
+      background: #fff;
       color: #0a1d46;
     }
 
     header {
       background: #0a1d46;
       color: white;
-      padding: 1.5rem;
+      padding: 1rem;
       text-align: center;
       font-size: 1.5rem;
       font-weight: bold;
     }
 
     .hero {
-      padding: 3rem 1.5rem 2rem;
+      padding: 2.5rem 1rem 2rem;
       text-align: center;
-      background: linear-gradient(to right, #0a1d46, #264385);
+      background: linear-gradient(to right, #0a1d46, #233c67);
       color: white;
     }
     .hero h1 {
@@ -45,33 +45,37 @@
       border-radius: 30px;
       font-weight: bold;
       text-decoration: none;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
 
-    .section-title {
+    h2.section-title {
       font-size: 1.4rem;
-      padding: 2rem 1rem 1rem;
+      padding: 1.5rem 1rem 0.5rem;
       text-align: center;
     }
 
     .carousel {
       display: flex;
       overflow-x: auto;
-      gap: 1rem;
       scroll-snap-type: x mandatory;
+      gap: 1rem;
       padding: 1rem;
+    }
+    .carousel::-webkit-scrollbar {
+      display: none;
     }
     .card {
       flex: 0 0 85%;
       background: #f9fbfd;
       border-radius: 16px;
       overflow: hidden;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
       scroll-snap-align: center;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+      position: relative;
     }
     .card img {
       width: 100%;
       display: block;
-      height: 200px;
       object-fit: cover;
     }
     .card h3 {
@@ -87,7 +91,38 @@
       text-align: center;
       padding: 2rem 1rem;
       font-size: 0.9rem;
-      margin-top: 2rem;
+    }
+
+    /* MODAL */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.8);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    .modal-content {
+      max-width: 90%;
+      border-radius: 12px;
+      overflow: hidden;
+      background: white;
+    }
+    .modal img {
+      width: 100%;
+      height: auto;
+    }
+    .modal .close-button {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      font-size: 2rem;
+      color: white;
+      cursor: pointer;
     }
   </style>
 </head>
@@ -96,45 +131,65 @@
 
   <section class="hero">
     <h1>Future-Ready Websites</h1>
-    <p>Clean, professional sites built in volt speed.</p>
+    <p>Fast, clean, and custom-built for your brand.</p>
     <a href="https://fiverr.com/kenan_jg">Start on Fiverr</a>
   </section>
 
-  <div class="section-title">🔥 Featured Offers</div>
+  <h2 class="section-title">🔥 Featured Offers</h2>
   <div class="carousel">
-    <div class="card">
-      <img src="images/Offer-1.jpg" alt="Offer 1" />
-      <h3>Custom Website Design</h3>
+    <div class="card" onclick="openModal('images/Offer-1.jpg')">
+      <img src="images/Offer-1.jpg" alt="Offer 1">
+      <h3>Custom Website</h3>
     </div>
-    <div class="card">
-      <img src="images/Offer-2.jpg" alt="Offer 2" />
+    <div class="card" onclick="openModal('images/Offer-2.jpg')">
+      <img src="images/Offer-2.jpg" alt="Offer 2">
       <h3>E-commerce Setup</h3>
     </div>
-    <div class="card">
-      <img src="images/Offer-3.jpg" alt="Offer 3" />
-      <h3>Landing Pages & Funnels</h3>
-    </div>
-  </div>
-
-  <div class="section-title">🚀 Services</div>
-  <div class="carousel">
-    <div class="card">
-      <img src="images/ecommerce-vin.jpg" alt="E-commerce" />
-      <h3>E-commerce Solutions</h3>
-    </div>
-    <div class="card">
-      <img src="images/custom_dev_blue_theme.jpg" alt="Custom Dev" />
-      <h3>Custom Development</h3>
-    </div>
-    <div class="card">
-      <img src="images/landing_pages_funnels.jpg" alt="Landing" />
+    <div class="card" onclick="openModal('images/Offer-3.jpg')">
+      <img src="images/Offer-3.jpg" alt="Offer 3">
       <h3>Landing Pages</h3>
     </div>
   </div>
 
+  <h2 class="section-title">🚀 Our Services</h2>
+  <div class="carousel">
+    <div class="card" onclick="openModal('images/ecommerce-vin.jpg')">
+      <img src="images/ecommerce-vin.jpg" alt="E-commerce">
+      <h3>E-commerce Development</h3>
+    </div>
+    <div class="card" onclick="openModal('images/custom_dev_blue_theme.jpg')">
+      <img src="images/custom_dev_blue_theme.jpg" alt="Web Dev">
+      <h3>Web Development</h3>
+    </div>
+    <div class="card" onclick="openModal('images/landing_pages_funnels.jpg')">
+      <img src="images/landing_pages_funnels.jpg" alt="Landing Pages">
+      <h3>Landing Pages</h3>
+    </div>
+  </div>
+
+  <div class="modal" id="previewModal">
+    <span class="close-button" onclick="closeModal()">&times;</span>
+    <div class="modal-content">
+      <img id="modalImage" src="" alt="Popup Image">
+    </div>
+  </div>
+
   <footer>
-    WebArrows &copy; 2025<br/>
-    Let's launch your future online.
+    WebArrows &copy; 2025<br>
+    Mobile Edition — Built for conversion.
   </footer>
+
+  <script>
+    function openModal(imgSrc) {
+      const modal = document.getElementById("previewModal");
+      const modalImg = document.getElementById("modalImage");
+      modalImg.src = imgSrc;
+      modal.style.display = "flex";
+    }
+
+    function closeModal() {
+      document.getElementById("previewModal").style.display = "none";
+    }
+  </script>
 </body>
 </html>
