@@ -279,13 +279,16 @@ footer {
 /* === RESPONSIVE === */
 @media (max-width: 768px) {
   .carousel-card {
-    position: relative;
-    transform: scale(1) !important;
-    opacity: 1 !important;
-    width: 85%;
+    position: relative; /* ✅ Good */
+    transform: none !important; /* ✅ Good */
+    margin-bottom: 1.5rem; /* ✅ Good */
+    width: 90%;  /* ✅ Better than 85% */
     height: auto;
-    margin-bottom: 1.5rem;
+    opacity: 1 !important;
+    left: auto; /* ✅ ADD THIS */
+    top: auto;  /* ✅ ADD THIS */
   }
+}
   .carousel {
     flex-direction: column;
     height: auto;
@@ -427,6 +430,7 @@ body.modal-open {
   .carousel {
     flex-direction: column;
     height: auto;
+    overflow-x: hidden;
   }
 
   .carousel-card {
