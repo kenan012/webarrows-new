@@ -156,6 +156,7 @@ width: 100%;
   margin: 0 auto;
   overflow: visible;
   z-index: 1;
+  flex-wrap: wrap;
 }
 
 .carousel-card {
@@ -420,4 +421,20 @@ body.modal-open {
   position: absolute;
   /* ...existing styles... */
   animation: none;
+}
+
+@media (max-width: 768px) {
+  .carousel {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .carousel-card {
+    position: relative;
+    width: 90%;
+    height: auto;
+    transform: none !important;
+    margin-bottom: 1rem;
+    opacity: 1 !important;
+  }
 }
