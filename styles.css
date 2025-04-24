@@ -156,7 +156,6 @@ width: 100%;
   margin: 0 auto;
   overflow: visible;
   z-index: 1;
-  flex-wrap: wrap;
 }
 
 .carousel-card {
@@ -279,16 +278,13 @@ footer {
 /* === RESPONSIVE === */
 @media (max-width: 768px) {
   .carousel-card {
-    position: relative; /* ✅ Good */
-    transform: none !important; /* ✅ Good */
-    margin-bottom: 1.5rem; /* ✅ Good */
-    width: 90%;  /* ✅ Better than 85% */
-    height: auto;
+    position: relative;
+    transform: scale(1) !important;
     opacity: 1 !important;
-    left: auto; /* ✅ ADD THIS */
-    top: auto;  /* ✅ ADD THIS */
+    width: 85%;
+    height: auto;
+    margin-bottom: 1.5rem;
   }
-}
   .carousel {
     flex-direction: column;
     height: auto;
@@ -426,19 +422,58 @@ body.modal-open {
   animation: none;
 }
 
+/* === MOBILE ENHANCEMENTS === */
 @media (max-width: 768px) {
+  .hero-text {
+    text-align: center;
+    margin-top: 5rem;
+  }
+
   .carousel {
-    flex-direction: column;
-    height: auto;
-    overflow-x: hidden;
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding: 1rem 0;
   }
 
   .carousel-card {
-    position: relative;
-    width: 90%;
-    height: auto;
+    flex: 0 0 90%;
+    margin: 0 5%;
+    scroll-snap-align: center;
+    position: relative !important;
     transform: none !important;
-    margin-bottom: 1rem;
     opacity: 1 !important;
   }
+
+  .button.glow-on-hover {
+    width: 100%;
+    text-align: center;
+    font-size: 1rem;
+  }
+
+  .card-title {
+    font-size: 1.2rem;
+    padding: 0.5rem;
+  }
+
+  .sidebar {
+    display: none;
+  }
+
+  .top-right {
+    gap: 0.5rem;
+  }
+
+  .header {
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
 }
+
+@media (max-width: 768px) {
+  .carousel {
+    scroll-behavior: smooth;
+  }
+}
+
