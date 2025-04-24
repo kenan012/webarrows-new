@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>E-commerce Solutions | WebArrows</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body>
+
+<div class="sidebar" id="sidebar">
+  <a href="index.html"><i class="fas fa-home"></i> Home</a>
+  <a href="custom-websites.html"><i class="fas fa-code"></i> Custom Websites</a>
+  <a href="ecommerce.html"><i class="fas fa-shopping-cart"></i> E-commerce</a>
+  <a href="landing-pages.html"><i class="fas fa-bullhorn"></i> Landing Pages</a>
+  <a href="#" onclick="closeSidebar()"><i class="fas fa-times"></i> Close</a>
+</div>
+
+<header class="header">
+  <a href="index.html" class="logo">WebArrows</a>
+  <div class="top-right">
+    <div class="language-switcher">EN | AR</div>
+    <div class="menu-toggle" onclick="openSidebar()"><i class="fas fa-bars"></i></div>
+  </div>
+</header>
+
+<section class="hero-code" style="background-image: linear-gradient(to right, rgba(0, 0, 0, 0.9), rgba(0,0,0,0.4), rgba(0,0,0,0)), url('images/ecommerce-vin.png');">
+  <div class="hero-text">
+    <h1>E-commerce Development</h1>
+    <p>Build powerful and scalable online stores with ease</p>
+  </div>
+</section>
+
+<section class="content-section">
+  <div class="container">
+    <h2>Smart Commerce Solutions</h2>
+    <p>This section is ready for your store features, integrations, and product experience tips.</p>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2025 WebArrows. All rights reserved.</p>
+</footer>
+
+<script>
+  function openSidebar() {
+    document.getElementById("sidebar").classList.add("sidebar-open");
+    document.getElementById("sidebarOverlay").style.display = "block";
+  }
+
+  function closeSidebar() {
+    document.getElementById("sidebar").classList.remove("sidebar-open");
+    document.getElementById("sidebarOverlay").style.display = "none";
+  }
+</script>
+
+<div id="sidebarOverlay" class="sidebar-overlay" onclick="closeSidebar()"></div>
+
+</body>
+</html>

@@ -8,26 +8,23 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
 <body>
-
-<!-- Sidebar -->
 <div class="sidebar" id="sidebar">
   <a href="index.html"><i class="fas fa-home"></i> Home</a>
-  <a href="services.html"><i class="fas fa-briefcase"></i> Services</a>
+  <a href="custom-websites.html"><i class="fas fa-briefcase"></i> Custom Website </a>
+  <a href="ecommerce.html"><i class="fas fa-briefcase"></i> E-commerce </a>
+  <a href="landing-pages.html"><i class="fas fa-briefcase"></i> Landing Pages </a>
   <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
-  <a href="blog.html"><i class="fas fa-newspaper"></i> Blog</a>
   <a href="#" onclick="closeSidebar()"><i class="fas fa-times"></i> Close</a>
 </div>
 
-<!-- Header -->
 <header class="header">
-  <div class="logo">WebArrows</div>
+  <a href="index.html" class="logo">WebArrows</a>
   <div class="top-right">
     <div class="language-switcher">EN | AR</div>
     <div class="menu-toggle" onclick="openSidebar()"><i class="fas fa-bars"></i></div>
   </div>
 </header>
 
-<!-- Hero -->
 <section class="hero-code">
   <div class="hero-text">
     <h1>Future-Ready<br>Websites for You</h1>
@@ -35,47 +32,258 @@
     <a href="https://fiverr.com/kenan_jg" class="button glow-on-hover">Start on Fiverr</a>
   </div>
 </section>
-
-<!-- Homepage Services -->
-<section class="home-services">
-  <h2>What We Do</h2>
-  <div class="home-cards">
-    <a href="services.html#webdesign" class="card-link">
-      <div class="card hover-scale">
-        <i class="fas fa-laptop-code icon"></i>
-        <h3>Responsive Web Design</h3>
-        <p>Fast, scalable websites that adapt to any screen.</p>
-      </div>
-    </a>
-    <a href="services.html#landingpage" class="card-link">
-      <div class="card hover-scale">
-        <i class="fas fa-bullseye icon"></i>
-        <h3>Landing Page Optimization</h3>
-        <p>High-converting landing pages with smart CTAs.</p>
-      </div>
-    </a>
-    <a href="services.html#branding" class="card-link">
-      <div class="card hover-scale">
-        <i class="fas fa-palette icon"></i>
-        <h3>Branding & Identity</h3>
-        <p>Custom logos, colors, and style systems that pop.</p>
-      </div>
-    </a>
+<section class="offers-slider">
+  <h2>🔥 Featured Offers</h2>
+  <div class="carousel" id="offers-carousel">
+    <div class="carousel-card active"><img src="images/offer-1.jpg" alt="Offer 1"></div>
+    <div class="carousel-card next"><img src="images/offer-2.jpg" alt="Offer 2"></div>
+    <div class="carousel-card prev"><img src="images/offer-3.jpg" alt="Offer 3"></div>
   </div>
 </section>
 
-<!-- Footer -->
-<footer>
-  <p>© 2025 WebArrows</p>
-</footer>
+
+<<section class="home-services">
+  <h2>🚀 Our Services</h2>
+  <div class="carousel" id="services-carousel">
+    <div class="carousel-card active" data-service="webdesign">
+      <div class="card-image" style="background-image: url('images/ecommerce-vin.jpg');">
+        <div class="card-overlay">
+          <h3 class="card-title">E-commerce Solutions</h3>
+        </div>
+      </div>
+    </div>
+    
+       /*
+       <div class="carousel-card next" data-service="landingpage">
+        <div class="card-image" style="background-image: url('images/custom_dev_blue_theme.jpg');">
+          <div class="card-overlay">
+            <h3 class="card-title">Web Development</h3>
+          </div>
+        </div>
+      </div>
+      
+
+    <div class="carousel-card prev" data-service="branding">
+      <div class="card-image" style="background-image: url('images/landing_pages_funnels.jpg');">
+        <div class="card-overlay">
+          <h3 class="card-title">Creative Landing Pages</h3>
+        </div>
+      </div>
+    </div>
+    
+</section>
+
+
+<!-- Modal Structure -->
+<!-- Modal Structure -->
+<div id="serviceModal" class="modal">
+  <span class="close-button">&times;</span>
+  <a id="popupLink" href="#">
+    <img id="modalImage" class="modal-image" src="" alt="Popup Image" />
+  </a>
+</div>
+
+
+
+
+<!-- offers Carousel Script -->
+<script>
+  const offerCards = document.querySelectorAll("#offers-carousel .carousel-card");
+  let offerIndex = 0;
+  let offerInterval;
+
+  function rotateOffers() {
+    offerCards.forEach(card => card.classList.remove("active", "next", "prev"));
+    offerCards[offerIndex].classList.add("active");
+    offerCards[(offerIndex + 1) % offerCards.length].classList.add("next");
+    offerCards[(offerIndex + 2) % offerCards.length].classList.add("prev");
+  }
+
+  function startOffers() {
+    offerInterval = setInterval(() => {
+      offerIndex = (offerIndex + 1) % offerCards.length;
+      rotateOffers();
+    }, 3500);
+  }
+
+  function stopOffers() {
+    clearInterval(offerInterval);
+  }
+
+  offerCards.forEach((card, index) => {
+    card.addEventListener("mouseenter", () => {
+      stopOffers();
+      offerIndex = index;
+      rotateOffers();
+    });
+    card.addEventListener("mouseleave", () => {
+      startOffers();
+    });
+  });
+
+  rotateOffers();
+  startOffers();
+</script>
+
+<!-- Services Carousel Script -->
+
 
 <script>
-  function openSidebar() {
-    document.getElementById("sidebar").classList.add("sidebar-open");
+  const servicesCards = document.querySelectorAll("#services-carousel .carousel-card");
+  let serviceIndex = 0;
+  let serviceInterval;
+
+  function rotateServices() {
+    servicesCards.forEach(card => card.classList.remove("active", "next", "prev"));
+    servicesCards[serviceIndex].classList.add("active");
+    servicesCards[(serviceIndex + 1) % servicesCards.length].classList.add("next");
+    servicesCards[(serviceIndex + 2) % servicesCards.length].classList.add("prev");
   }
-  function closeSidebar() {
-    document.getElementById("sidebar").classList.remove("sidebar-open");
+
+  function startServices() {
+    serviceInterval = setInterval(() => {
+      serviceIndex = (serviceIndex + 1) % servicesCards.length;
+      rotateServices();
+    }, 4000);
   }
+
+  function stopServices() {
+    clearInterval(serviceInterval);
+  }
+
+  servicesCards.forEach((card, index) => {
+    card.addEventListener("mouseenter", () => {
+      stopServices();
+      serviceIndex = index;
+      rotateServices();
+    });
+    card.addEventListener("mouseleave", () => {
+      startServices();
+    });
+  });
+
+  rotateServices();
+  startServices();
 </script>
+
+<script>
+ function openSidebar() {
+  document.getElementById("sidebar").classList.add("sidebar-open");
+  document.getElementById("sidebarOverlay").style.display = "block";
+}
+
+function closeSidebar() {
+  document.getElementById("sidebar").classList.remove("sidebar-open");
+  document.getElementById("sidebarOverlay").style.display = "none";
+}
+
+</script>
+
+<script>
+  const modal = document.getElementById("serviceModal");
+  const closeButton = document.querySelector(".close-button");
+  const modalImage = document.getElementById("modalImage");
+  const popupLink = document.getElementById("popupLink");
+
+  const serviceDetails = {
+    webdesign: {
+      img: "images/ecommerce-vin-popup.png",
+      link: "ecommerce.html"
+    },
+    landingpage: {
+      img: "images/custom-websites-blue-popup.jpg",
+      link: "custom-websites.html"
+    },
+    branding: {
+      img: "images/landing-pages-green-popup.jpg",
+      link: "landing-pages.html"
+    }
+  };
+
+  document.querySelectorAll(".carousel-card").forEach(card => {
+    card.addEventListener("click", () => {
+      const key = card.getAttribute("data-service");
+      const detail = serviceDetails[key];
+      if (detail) {
+        modalImage.src = detail.img;
+        popupLink.href = detail.link;
+        modal.style.display = "flex";
+        document.body.classList.add("modal-open");
+      }
+    });
+  });
+
+  closeButton.addEventListener("click", () => {
+    modal.style.display = "none";
+    document.body.classList.remove("modal-open");
+  });
+
+  window.addEventListener("click", event => {
+    if (event.target === modal) {
+      modal.style.display = "none";
+      document.body.classList.remove("modal-open");
+    }
+  });
+</script>
+
+
+
+<script>
+
+const serviceDetails = {
+  webdesign: {
+    title: "Responsive Web Design",
+    description: "Detailed information about Responsive Web Design.",
+    link: "services.html#webdesign"
+  },
+  landingpage: {
+    title: "Landing Page Optimization",
+    description: "Detailed information about Landing Page Optimization.",
+    link: "services.html#landingpage"
+  },
+  branding: {
+    title: "Branding & Identity",
+    description: "Detailed information about Branding & Identity.",
+    link: "services.html#branding"
+  }
+};
+
+const learnMoreLink = document.getElementById("learnMoreLink");
+
+document.querySelectorAll(".carousel-card").forEach(card => {
+  card.addEventListener("click", () => {
+    const serviceKey = card.getAttribute("data-service");
+    const service = serviceDetails[serviceKey];
+    if (service) {
+      modalTitle.textContent = service.title;
+      modalDescription.textContent = service.description;
+      learnMoreLink.href = service.link;
+      modal.style.display = "block";
+      document.body.classList.add("modal-open");
+    }
+  });
+});
+</script>
+
+<script>
+  document.querySelectorAll('.carousel-card').forEach(card => {
+    let hoverTimer;
+
+    card.addEventListener('mouseenter', () => {
+      hoverTimer = setTimeout(() => {
+        card.classList.add('hover-expand');
+      }, 100); // 1.75 seconds
+    });
+
+    card.addEventListener('mouseleave', () => {
+      clearTimeout(hoverTimer);
+      card.classList.remove('hover-expand');
+    });
+  });
+</script>
+
+
+<div id="sidebarOverlay" class="sidebar-overlay" onclick="closeSidebar()"></div>
+
 </body>
 </html>

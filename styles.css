@@ -13,6 +13,10 @@ a {
   text-decoration: none;
   color: inherit;
 }
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+}
 
 /* === HEADER === */
 .header {
@@ -22,7 +26,8 @@ a {
   justify-content: space-between;
   align-items: center;
   padding: 1.2rem 2rem;
-  position: sticky;
+  position: fixed;
+width: 100%;
   top: 0;
   z-index: 999;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
@@ -30,7 +35,10 @@ a {
 .logo {
   font-weight: bold;
   font-size: 1.5rem;
+  color: white;
+  text-decoration: none;
 }
+
 .top-right {
   display: flex;
   align-items: center;
@@ -74,6 +82,17 @@ a {
   right: 0;
 }
 
+.sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 998;
+  display: none;
+}
+
 /* === HERO SECTION === */
 .hero-code {
   min-height: 60vh;
@@ -98,48 +117,6 @@ a {
   font-size: 1.1rem;
   margin-bottom: 1.5rem;
 }
-
-.home-services {
-  background: #f9fbfd;
-  padding: 4rem 2rem;
-  text-align: center;
-}
-.home-services h2 {
-  font-size: 2rem;
-  color: #0a1d46;
-  margin-bottom: 2.5rem;
-}
-.home-cards {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1.5rem;
-}
-.home-cards .card {
-  background: white;
-  border-radius: 20px;
-  padding: 2rem;
-  max-width: 280px;
-  flex: 1 1 280px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.07);
-  text-align: center;
-  transition: transform 0.3s ease;
-}
-.home-cards .card:hover {
-  transform: scale(1.05);
-}
-.home-cards .icon {
-  font-size: 2rem;
-  color: #0a1d46;
-  margin-bottom: 1rem;
-}
-.home-cards h3 {
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: #0a1d46;
-  margin-bottom: 0.5rem;
-}
-
 .button.glow-on-hover {
   background: white;
   color: #0a1d46;
@@ -155,68 +132,139 @@ a {
   box-shadow: 0 0 10px #ffffffc7, 0 0 20px #fff;
 }
 
-/* === SERVICE STACK === */
-.service-stack {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  padding: 3rem 2rem;
-  max-width: 900px;
-  margin: 0 auto;
+/* === CAROUSEL SHARED === */
+.home-services {
+  background: #f9fbfd;
+  padding: 4rem 2rem;
+  text-align: center;
 }
-.expand-card {
-  background: white;
-  border-radius: 15px;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-  transition: 0.3s ease;
-  overflow: hidden;
-  cursor: pointer;
+
+
+.home-services,
+.offers-slider {
+  overflow: visible; /* Prevent clipping from parent */
 }
-.card-header {
+
+.carousel {
+  position: relative;
   display: flex;
   align-items: center;
-  gap: 1.2rem;
-  padding: 1.5rem;
+  justify-content: center;
+  height: 400px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  overflow: visible;
+  z-index: 1;
 }
-.card-header img {
-  width: 80px;
-  height: 80px;
+
+.carousel-card {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%) scale(0.85);
+  transition: transform 0.4s ease, box-shadow 0.3s ease;
+  width: 300px;
+  height: 360px;
+  background: white;
+  border-radius: 20px;
+  padding: 1.5rem;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.8s ease-in-out;
+  opacity: 0.6;
+  text-align: center;
+}
+
+/* Make the entire card clickable */
+.carousel-card {
+  cursor: pointer;
+}
+
+.carousel-card {
+  cursor: pointer; /* Shows the hand cursor */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.carousel-card {
+  transition: transform 1.5s ease-in-out, box-shadow 0.5s ease;
+}
+
+.carousel-card.hover-expand {
+  transform: translateX(-50%) scale(1.25) !important;
+  transform-origin: center center; /* Ensures it grows evenly */
+  z-index: 5;
+}
+
+
+
+
+.carousel-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+.carousel-card:hover {
+  box-shadow: 0 0 15px rgba(10, 29, 70, 0.3);
+}
+
+.learn-more-text {
+  font-size: 0.8rem;
+  margin-top: 1rem;
+  color: #0a1d46;
+  opacity: 0.7;
+}
+.carousel-card:hover .learn-more-text {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+.carousel-card.active {
+  transform: translateX(-50%) scale(1.1);
+  opacity: 1;
+  z-index: 3;
+}
+
+.carousel-card.next {
+  transform: translateX(60%) scale(0.95); /* reduced from 180% */
+  z-index: 2;
+}
+
+
+.carousel-card.prev {
+  transform: translateX(-160%) scale(0.95);
+  z-index: 2;
+}
+
+
+
+.carousel-card .icon {
+  font-size: 2.8rem; /* Increased from 2rem */
+  color: #0a1d46;
+  margin-bottom: 1rem;
+}
+
+.carousel-card img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  border-radius: 10px;
+  border-radius: 20px; /* matches the card’s rounded corners */
 }
-.card-title h2 {
-  font-size: 1.3rem;
+
+
+/* === SECTIONS === */
+.home-services,
+.offers-slider {
+  background: #f9fbfd;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+.home-services h2,
+.offers-slider h2 {
+  font-size: 2rem;
   color: #0a1d46;
-  margin-bottom: 0.3rem;
+  margin-bottom: 2.5rem;
 }
-.price {
-  font-weight: bold;
-  color: #555;
-}
-.read-more {
-  margin-left: auto;
-  color: #0a1d46;
-  font-weight: bold;
-  font-size: 0.9rem;
-}
-.card-body {
-  background: #f5f7fa;
-  padding: 1.5rem;
-}
-.card-body.hidden {
-  display: none;
-}
-.card-body ul {
-  padding-left: 1.2rem;
-}
-.card-footer {
-  text-align: right;
-  padding-top: 1rem;
-}
-.footer-link {
-  color: #0a1d46;
-  font-weight: bold;
-}
+
 
 /* === FOOTER === */
 footer {
@@ -225,4 +273,151 @@ footer {
   text-align: center;
   padding: 2rem;
   font-size: 0.85rem;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  .carousel-card {
+    position: relative;
+    transform: scale(1) !important;
+    opacity: 1 !important;
+    width: 85%;
+    height: auto;
+    margin-bottom: 1.5rem;
+  }
+  .carousel {
+    flex-direction: column;
+    height: auto;
+  }
+}
+
+.service-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 3rem 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+  align-items: center; /* <-- This line centers the cards */
+}
+
+.specs {
+  list-style: none;
+  padding: 0;
+  margin-top: 0.8rem;
+  font-size: 0.75rem;
+  color: #555;
+}
+.specs li {
+  margin-bottom: 0.3rem;
+}
+
+/* Place in styles.css */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0,0,0,0.8);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-image {
+  width: 800px; /* You can change this number */
+  max-width: 95%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+  transition: transform 0.3s ease;
+}
+
+.modal .close-button {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 2rem;
+  color: white;
+  cursor: pointer;
+}
+
+body.modal-open {
+  overflow: hidden;
+}
+
+
+
+
+.modal-content {
+  background-color: #fff;
+  margin: 10% auto;
+  padding: 20px;
+  width: 80%;
+  border-radius: 5px;
+}
+
+.close-button {
+  float: right;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+body.modal-open {
+  overflow: hidden;
+}
+
+.carousel-card .card-image {
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.card-overlay {
+  width: 100%;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.4); /* darker overlay for contrast */
+  text-align: center;
+}
+
+.card-title {
+  color: white;
+  font-size: 1.4rem;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  background: rgba(10, 29, 70, 0.7);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  backdrop-filter: blur(3px);
+}
+
+.carousel-card.hover-expand .card-title {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  text-shadow: none;
+  box-shadow: none;
+  background: none;
+}
+
+.carousel-card.hover-expand .card-overlay {
+  background: transparent;
+}
+
+
+.carousel-card {
+  position: absolute;
+  /* ...existing styles... */
+  animation: none;
 }
