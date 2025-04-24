@@ -32,10 +32,12 @@
     .hero h1 {
       font-size: 2rem;
       margin-bottom: 1rem;
+      animation: slideUp 0.6s ease-in-out;
     }
     .hero p {
       font-size: 1rem;
       margin-bottom: 1.5rem;
+      opacity: 0.85;
     }
     .hero a {
       display: inline-block;
@@ -65,24 +67,31 @@
       display: none;
     }
     .card {
-      flex: 0 0 85%;
+      flex: 0 0 70%;
       background: #f9fbfd;
       border-radius: 16px;
       overflow: hidden;
       scroll-snap-align: center;
       box-shadow: 0 6px 15px rgba(0,0,0,0.1);
       position: relative;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .card:hover {
+      transform: scale(1.03);
     }
     .card img {
       width: 100%;
-      display: block;
+      height: 250px;
       object-fit: cover;
+      border-bottom: 1px solid #eee;
     }
     .card h3 {
       padding: 1rem;
       margin: 0;
       font-size: 1.1rem;
       color: #0a1d46;
+      text-align: center;
     }
 
     footer {
@@ -107,14 +116,17 @@
       z-index: 1000;
     }
     .modal-content {
-      max-width: 90%;
-      border-radius: 12px;
+      max-width: 95%;
+      max-height: 90vh;
+      border-radius: 16px;
       overflow: hidden;
-      background: white;
+      position: relative;
+      box-shadow: 0 0 30px rgba(0,0,0,0.5);
     }
     .modal img {
       width: 100%;
       height: auto;
+      display: block;
     }
     .modal .close-button {
       position: absolute;
@@ -123,6 +135,18 @@
       font-size: 2rem;
       color: white;
       cursor: pointer;
+      z-index: 1001;
+    }
+
+    @keyframes slideUp {
+      from {
+        transform: translateY(20px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
     }
   </style>
 </head>
@@ -137,15 +161,15 @@
 
   <h2 class="section-title">🔥 Featured Offers</h2>
   <div class="carousel">
-    <div class="card" onclick="openModal('images/Offer-1.jpg')">
+    <div class="card" onclick="openModal('images/Offer-1.jpg', 'custom-websites.html')">
       <img src="images/Offer-1.jpg" alt="Offer 1">
       <h3>Custom Website</h3>
     </div>
-    <div class="card" onclick="openModal('images/Offer-2.jpg')">
+    <div class="card" onclick="openModal('images/Offer-2.jpg', 'ecommerce.html')">
       <img src="images/Offer-2.jpg" alt="Offer 2">
       <h3>E-commerce Setup</h3>
     </div>
-    <div class="card" onclick="openModal('images/Offer-3.jpg')">
+    <div class="card" onclick="openModal('images/Offer-3.jpg', 'landing-pages.html')">
       <img src="images/Offer-3.jpg" alt="Offer 3">
       <h3>Landing Pages</h3>
     </div>
@@ -153,24 +177,26 @@
 
   <h2 class="section-title">🚀 Our Services</h2>
   <div class="carousel">
-    <div class="card" onclick="openModal('images/ecommerce-vin.jpg')">
+    <div class="card" onclick="openModal('images/ecommerce-vin.jpg', 'ecommerce.html')">
       <img src="images/ecommerce-vin.jpg" alt="E-commerce">
       <h3>E-commerce Development</h3>
     </div>
-    <div class="card" onclick="openModal('images/custom_dev_blue_theme.jpg')">
+    <div class="card" onclick="openModal('images/custom_dev_blue_theme.jpg', 'custom-websites.html')">
       <img src="images/custom_dev_blue_theme.jpg" alt="Web Dev">
       <h3>Web Development</h3>
     </div>
-    <div class="card" onclick="openModal('images/landing_pages_funnels.jpg')">
+    <div class="card" onclick="openModal('images/landing_pages_funnels.jpg', 'landing-pages.html')">
       <img src="images/landing_pages_funnels.jpg" alt="Landing Pages">
       <h3>Landing Pages</h3>
     </div>
   </div>
 
-  <div class="modal" id="previewModal">
+  <div class="modal" id="previewModal" onclick="handleOutsideClick(event)">
     <span class="close-button" onclick="closeModal()">&times;</span>
-    <div class="modal-content">
-      <img id="modalImage" src="" alt="Popup Image">
+    <div class="modal-content" onclick="event.stopPropagation();">
+      <a id="modalLink" href="#" target="_self">
+        <img id="modalImage" src="" alt="Popup Image">
+      </a>
     </div>
   </div>
 
@@ -180,15 +206,23 @@
   </footer>
 
   <script>
-    function openModal(imgSrc) {
+    function openModal(imgSrc, linkHref) {
       const modal = document.getElementById("previewModal");
       const modalImg = document.getElementById("modalImage");
+      const modalLink = document.getElementById("modalLink");
       modalImg.src = imgSrc;
+      modalLink.href = linkHref;
       modal.style.display = "flex";
     }
 
     function closeModal() {
       document.getElementById("previewModal").style.display = "none";
+    }
+
+    function handleOutsideClick(event) {
+      if (!event.target.closest('.modal-content')) {
+        closeModal();
+      }
     }
   </script>
 </body>
