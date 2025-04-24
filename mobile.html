@@ -10,7 +10,7 @@
       font-family: 'Segoe UI', sans-serif;
       margin: 0;
       padding: 0;
-      background: #fff;
+      background: #f6f9ff;
       color: #0a1d46;
     }
 
@@ -26,11 +26,11 @@
     .hero {
       padding: 2.5rem 1rem 2rem;
       text-align: center;
-      background: linear-gradient(to right, #0a1d46, #233c67);
+      background: linear-gradient(135deg, #0a1d46, #233c67);
       color: white;
     }
     .hero h1 {
-      font-size: 2rem;
+      font-size: 2.1rem;
       margin-bottom: 1rem;
       animation: slideUp 0.6s ease-in-out;
     }
@@ -41,18 +41,23 @@
     }
     .hero a {
       display: inline-block;
-      padding: 0.75rem 1.5rem;
-      background: white;
+      padding: 0.8rem 1.7rem;
+      background: linear-gradient(135deg, #ffffff, #e9e9e9);
       color: #0a1d46;
       border-radius: 30px;
       font-weight: bold;
       text-decoration: none;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+    }
+    .hero a:hover {
+      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+      transform: scale(1.05);
     }
 
     h2.section-title {
       font-size: 1.4rem;
-      padding: 1.5rem 1rem 0.5rem;
+      padding: 2rem 1rem 1rem;
       text-align: center;
     }
 
@@ -62,27 +67,33 @@
       scroll-snap-type: x mandatory;
       gap: 1rem;
       padding: 1rem;
+      scroll-behavior: smooth;
     }
     .carousel::-webkit-scrollbar {
-      display: none;
+      height: 6px;
+    }
+    .carousel::-webkit-scrollbar-thumb {
+      background: #c3c3c3;
+      border-radius: 3px;
     }
     .card {
       flex: 0 0 70%;
-      background: #f9fbfd;
+      background: white;
       border-radius: 16px;
       overflow: hidden;
       scroll-snap-align: center;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
       position: relative;
       cursor: pointer;
-      transition: transform 0.3s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
     .card:hover {
       transform: scale(1.03);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.2);
     }
     .card img {
       width: 100%;
-      height: 250px;
+      height: 240px;
       object-fit: cover;
       border-bottom: 1px solid #eee;
     }
@@ -110,18 +121,21 @@
       left: 0;
       width: 100vw;
       height: 100vh;
-      background-color: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(10px);
+      background-color: rgba(0, 0, 0, 0.5);
       justify-content: center;
       align-items: center;
       z-index: 1000;
     }
     .modal-content {
       max-width: 95%;
-      max-height: 90vh;
+      max-height: 85vh;
       border-radius: 16px;
       overflow: hidden;
+      background: rgba(255, 255, 255, 0.95);
       position: relative;
-      box-shadow: 0 0 30px rgba(0,0,0,0.5);
+      box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+      animation: fadeIn 0.3s ease-in-out;
     }
     .modal img {
       width: 100%;
@@ -133,7 +147,7 @@
       top: 1rem;
       right: 1rem;
       font-size: 2rem;
-      color: white;
+      color: #0a1d46;
       cursor: pointer;
       z-index: 1001;
     }
@@ -147,6 +161,33 @@
         transform: translateY(0);
         opacity: 1;
       }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    /* STICKY CTA */
+    .sticky-cta {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: linear-gradient(to right, #0a1d46, #233c67);
+      color: white;
+      padding: 0.8rem 1.3rem;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      font-weight: bold;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+      z-index: 1002;
+      text-decoration: none;
     }
   </style>
 </head>
@@ -199,6 +240,8 @@
       </a>
     </div>
   </div>
+
+  <a class="sticky-cta" href="https://fiverr.com/kenan_jg">🚀 Start Now</a>
 
   <footer>
     WebArrows &copy; 2025<br>
