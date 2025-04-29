@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>PAGE TITLE HERE</title> <!-- Each page can have its own title -->
+    <div id="head-placeholder"></div>
+  </head>
+  
+  <script>
+  fetch('head.html')
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById('head-placeholder').outerHTML = data;
+    });
+  </script>  
+</head>
+<body>
+  <div id="navbar-placeholder"></div>
+
+<script>
+fetch('navbar.html')
+  .then(response => response.text())
+  .then(data => {
+    document.getElementById('navbar-placeholder').outerHTML = data;
+  });
+</script>
+
+  
+  <main style="text-align: center; padding: 4rem 1rem;">
+    <h1>💳 Secure Payment</h1>
+    <p>We're ready when you are. Let’s lock in your website.</p>
+    <!-- Replace with your real payment system or embed a payment form here -->
+    <button class="button glow-on-hover" onclick="location.href='thank-you.html'" style="margin-top: 2rem;">Pay Now</button>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 WebArrows</p>
+  </footer>
+</body>
+</html>

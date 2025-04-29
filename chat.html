@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>PAGE TITLE HERE</title> <!-- Each page can have its own title -->
+    <div id="head-placeholder"></div>
+  </head>
+  
+  <script>
+  fetch('head.html')
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById('head-placeholder').outerHTML = data;
+    });
+  </script>  
+</head>
+<body>
+  <div id="navbar-placeholder"></div>
+
+<script>
+fetch('navbar.html')
+  .then(response => response.text())
+  .then(data => {
+    document.getElementById('navbar-placeholder').outerHTML = data;
+  });
+</script>
+  
+
+  <main style="text-align: center; padding: 4rem 1rem;">
+    <h1>💬 Let's Chat!</h1>
+    <p>Tell us about your project or ask us anything.</p>
+    <!-- Replace with actual chat integration later -->
+    <textarea placeholder="Type your message..." style="width: 90%; max-width: 600px; height: 150px; margin-top: 2rem;"></textarea><br><br>
+    <a href="payment.html" class="button glow-on-hover">Proceed to Payment</a>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 WebArrows</p>
+  </footer>
+
+  <script>
+    function openSidebar() {
+      document.getElementById("sidebar").classList.add("sidebar-open");
+      document.getElementById("sidebarOverlay").style.display = "block";
+    }
+    function closeSidebar() {
+      document.getElementById("sidebar").classList.remove("sidebar-open");
+      document.getElementById("sidebarOverlay").style.display = "none";
+    }
+    </script>
+
+
+<div id="sidebarOverlay" class="sidebar-overlay" onclick="closeSidebar()"></div>
+
+</body>
+</html>

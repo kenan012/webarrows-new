@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>PAGE TITLE HERE</title> <!-- Each page can have its own title -->
+    <div id="head-placeholder"></div>
+  </head>
+  
+  <script>
+  fetch('head.html')
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById('head-placeholder').outerHTML = data;
+    });
+  </script>
+</head>
+<body>
+
+  <div id="navbar-placeholder"></div>
+
+<script>
+fetch('navbar.html')
+  .then(response => response.text())
+  .then(data => {
+    document.getElementById('navbar-placeholder').outerHTML = data;
+  });
+</script>
+
+  <main style="padding: 4rem 1rem; text-align: center;">
+    <h1>🔥 Our Latest Offers</h1>
+    <p>Special deals just for you. Limited-time only!</p>
+
+    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem; margin-top: 3rem;">
+      <div class="card" style="width: 300px;">
+        <img src="images/Offer-1.jpg" alt="Offer 1" style="width: 100%; border-radius: 12px;">
+        <h3 style="margin-top: 1rem;">🚀 Launch Pack</h3>
+        <a href="chat.html" class="button glow-on-hover" style="margin-top: 0.5rem;">Claim This Offer</a>
+      </div>
+
+      <div class="card" style="width: 300px;">
+        <img src="images/Offer-2.jpg" alt="Offer 2" style="width: 100%; border-radius: 12px;">
+        <h3 style="margin-top: 1rem;">📦 Full Website Setup</h3>
+        <a href="chat.html" class="button glow-on-hover" style="margin-top: 0.5rem;">Claim This Offer</a>
+      </div>
+
+      <div class="card" style="width: 300px;">
+        <img src="images/Offer-3.jpg" alt="Offer 3" style="width: 100%; border-radius: 12px;">
+        <h3 style="margin-top: 1rem;">🔥 Ultimate Bundle</h3>
+        <a href="chat.html" class="button glow-on-hover" style="margin-top: 0.5rem;">Claim This Offer</a>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 WebArrows</p>
+  </footer>
+
+  <script>
+    function openSidebar() {
+      document.getElementById("sidebar").classList.add("sidebar-open");
+      document.getElementById("sidebarOverlay").style.display = "block";
+    }
+    function closeSidebar() {
+      document.getElementById("sidebar").classList.remove("sidebar-open");
+      document.getElementById("sidebarOverlay").style.display = "none";
+    }
+    </script>
+
+
+<div id="sidebarOverlay" class="sidebar-overlay" onclick="closeSidebar()"></div>
+
+</body>
+</html>

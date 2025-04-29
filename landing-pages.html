@@ -1,29 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Landing Pages | WebArrows</title>
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <title>PAGE TITLE HERE</title> <!-- Each page can have its own title -->
+    <div id="head-placeholder"></div>
+  </head>
+  
+  <script>
+  fetch('head.html')
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById('head-placeholder').outerHTML = data;
+    });
+  </script>
+  
 </head>
 <body>
 
-<div class="sidebar" id="sidebar">
-  <a href="index.html"><i class="fas fa-home"></i> Home</a>
-  <a href="custom-websites.html"><i class="fas fa-code"></i> Custom Websites</a>
-  <a href="ecommerce.html"><i class="fas fa-shopping-cart"></i> E-commerce</a>
-  <a href="landing-pages.html"><i class="fas fa-bullhorn"></i> Landing Pages</a>
-  <a href="#" onclick="closeSidebar()"><i class="fas fa-times"></i> Close</a>
-</div>
+  <div id="navbar-placeholder"></div>
 
-<header class="header">
-  <a href="index.html" class="logo">WebArrows</a>
-  <div class="top-right">
-    <div class="language-switcher">EN | AR</div>
-    <div class="menu-toggle" onclick="openSidebar()"><i class="fas fa-bars"></i></div>
-  </div>
-</header>
+<script>
+fetch('navbar.html')
+  .then(response => response.text())
+  .then(data => {
+    document.getElementById('navbar-placeholder').outerHTML = data;
+  });
+</script>
+
 
 <section class="hero-code" style="background-image: linear-gradient(to right, rgba(0, 0, 0, 0.9), rgba(0,0,0,0.4), rgba(0,0,0,0)), url('images/landing-pages-green.jpg');">
   <div class="hero-text">
@@ -32,16 +34,107 @@
   </div>
 </section>
 
-<section class="content-section">
+<!-- Start after Hero Section -->
+
+<section id="custom-website" class="custom-website-section">
   <div class="container">
-    <h2>Engaging Landing Pages</h2>
-    <p>This section is ready to display your funnel structures, form integrations, and call-to-action strategies.</p>
+    <div class="custom-website-content">
+      <div class="left-col">
+        <h2 class="section-title">Ready to Launch Your Website?</h2>
+        <p class="section-subtitle">You are in the right place</p>
+        <div class="steps-list">
+          <div class="step">
+            <p class="step-number">Step 1:</p>
+            <h3>👉 Contact Us</h3>
+            <p class="step-description">Tell us a little about your project — your ideas, goals, and any inspirations you have.</p>
+          </div>
+          <div class="step">
+            <p class="step-number">Step 2:</p>
+            <h3>👉 Get a Custom Plan</h3>
+            <p class="step-description">We'll quickly create a tailored plan, timeline, and affordable quote just for you.</p>
+          </div>
+          <div class="step">
+            <p class="step-number">Step 3:</p>
+            <h3>👉 Kick Off Your Project</h3>
+            <p class="step-description">Once you're happy with everything, we start building — fast, professional, and exactly how you want it.</p>
+          </div>
+          <div class="step">
+            <p class="step-number">Step 4:</p>
+            <h3>👉 Launch Your Website</h3>
+            <p class="step-description">In just a few days, your stunning, high-converting website will be ready to launch and impress the world.</p>
+          </div>
+        </div>
+        <button class="cta-btn">Chat With Us</button>
+      </div>
+      <div class="right-col">
+        <img src="images/landing-road-map.jpg" alt="Website Development Steps" class="full-width-image" />
+      </div>
+    </div>
   </div>
 </section>
 
-<footer>
-  <p>&copy; 2025 WebArrows. All rights reserved.</p>
-</footer>
+<!-- Services Section -->
+<section id="services" class="services-section">
+  <div class="container">
+    <h2 class="section-title">Landing Pages & Funnels</h2>
+    <p class="section-subtitle">One page. One goal. Built to convert with style and strategy.</p>
+    <div class="services-cards">
+      <div class="service-card">
+        <h3>High-Converting Layout</h3>
+        <p>Layouts designed to turn visitors into customers with clear, persuasive content.</p>
+      </div>
+      <div class="service-card">
+        <h3>A/B Testing Setup Ready</h3>
+        <p>Ready to optimize with A/B testing to fine-tune your website’s performance.</p>
+      </div>
+      <div class="service-card">
+        <h3>Bold CTAs & Visuals</h3>
+        <p>Engage users with compelling calls to action and eye-catching visuals.</p>
+      </div>
+      <div class="service-card">
+        <h3>SEO & Speed Optimized</h3>
+        <p>Fast loading and SEO-ready to boost your rankings and user experience.</p>
+      </div>
+      <div class="service-card">
+        <h3>CRM-Integrated Forms</h3>
+        <p>Collect leads seamlessly with forms integrated into your CRM for easy management.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- Portfolio Section -->
+<section id="start-project" class="start-project-section">
+  <div class="container">
+    <h2 class="section-title">Start Your Project with the Experts</h2>
+    <p class="section-subtitle">Every business has unique needs. Let’s create a custom, high-performance website for you. We’ll guide you through every step.</p>
+    <div class="cta-container">
+      <p class="cta-text">Our process is simple, fast, and effective. Let’s make your vision a reality. Ready to begin?</p>
+      <a href="#chat" class="cta-btn">Talk to Our Experts</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- Call to Action Section -->
+<section id="cta" class="cta-section">
+  <div class="container">
+    <h2 class="cta-title">Ready to Get Started?</h2>
+    <p class="cta-subtitle">Let's build your dream website today.</p>
+    <a href="#contact" class="cta-btn">Contact Us</a>
+  </div>
+</section>
+  
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2025 WebArrows. All rights reserved.</p>
+  </footer>
+  
+  
+  </div>
+</section>
 
 <script>
   function openSidebar() {
