@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>WebArrows - Home</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <script>
+    if (window.innerWidth <= 768) {
+      window.location.href = "mobile.html";
+    }
+  </script>
+</head>
+<body>
+  <div id="navbar-placeholder"></div>
+
+  <script>
+  fetch('navbar.html')
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById('navbar-placeholder').outerHTML = data;
+    });
+  </script>
+  
+
+
+
+<section class="hero-code">
+  <div class="hero-text">
+    <h1>Future-Ready<br>Build Your Website</h1>
+    <p>Clean, professional websites built<br>in volt speed.</p>
+    <a href="https://fiverr.com" target="_blank" class="hero-btn">Fiverr</a>
+  <a href="https://upwork.com" target="_blank" class="hero-btn">Upwork</a>
+  <a href="#services" class="hero-btn primary">Choose Your Website</a>
+  </div>
+</section>
+
+<section class="offers-slider">
+  <h2>What We Deliver</h2>
+  <div class="carousel" id="offers-carousel">
+    <div class="carousel-card active"><img src="images/Offer-1.jpg" alt="Offer 1"></div>
+    <div class="carousel-card next"><img src="images/Offer-2.jpg" alt="Offer 2"></div>
+    <div class="carousel-card prev"><img src="images/Offer-3.jpg" alt="Offer 3"></div>
+  </div>
+</section>
+
+
+<section id="services" class="home-services">
+  <h2>Our Services</h2>
+  <div class="carousel" id="services-carousel">
+    <div class="carousel-card active" data-service="webdesign">
+      <div class="card-image" style="background-image: url('images/ecommerce-vin.jpg');">
+        <div class="card-overlay">
+        </div>
+      </div>
+    </div>
+    
+       /*
+       <div class="carousel-card next" data-service="landingpage">
+        <div class="card-image" style="background-image: url('images/custom_dev_blue_theme.jpg');">
+          <div class="card-overlay">
+          </div>
+        </div>
+      </div>
+      
+
+    <div class="carousel-card prev" data-service="branding">
+      <div class="card-image" style="background-image: url('images/landing_pages_funnels.jpg');">
+        <div class="card-overlay">
+        </div>
+      </div>
+    </div>
+    
+</section>
+
+
+<!-- Modal Structure -->
+<!-- Modal Structure -->
+<div id="serviceModal" class="modal">
+  <span class="close-button">&times;</span>
+  <a id="popupLink" href="#">
+    <img id="modalImage" class="modal-image" src="" alt="Popup Image" />
+  </a>
+</div>
+
+
+<script>
+  if (window.innerWidth <= 768) {
+    window.location.href = "mobile.html";
+  }
+</script>
+
+
+<!-- offers Carousel Script -->
+<script>
+  const offerCards = document.querySelectorAll("#offers-carousel .carousel-card");
+  let offerIndex = 0;
+  let offerInterval;
+
+  function rotateOffers() {
+    offerCards.forEach(card => card.classList.remove("active", "next", "prev"));
+    offerCards[offerIndex].classList.add("active");
+    offerCards[(offerIndex + 1) % offerCards.length].classList.add("next");
+    offerCards[(offerIndex + 2) % offerCards.length].classList.add("prev");
+  }
+
+  function startOffers() {
+    offerInterval = setInterval(() => {
+      offerIndex = (offerIndex + 1) % offerCards.length;
+      rotateOffers();
+    }, 3500);
+  }
+
+  function stopOffers() {
+    clearInterval(offerInterval);
+  }
+
+  offerCards.forEach((card, index) => {
+    card.addEventListener("mouseenter", () => {
+      stopOffers();
+      offerIndex = index;
+      rotateOffers();
+    });
+    card.addEventListener("mouseleave", () => {
+      startOffers();
+    });
+  });
+
+  rotateOffers();
+  startOffers();
+</script>
+
+<!-- Why Choose Us (benefits)	 and Our Process (steps) -->
+
+<section id="whychoose" class="split-cards-section">
+  <h2 class="section-title">Why Choose Us?</h2>
+  <p class="section-subtitle">A few good reasons to work with WebArrows.</p>
+
+  <div class="cards-container">
+  <div class="choose-grid">
+    <div class="choose-box" onclick="activateBox(this)">
+      <div class="box-number">1</div>
+      <div class="box-content">
+        <strong>Because we'll make you more money.</strong>
+        <p>Customer-focused designs that convert and generate real sales.</p>
+      </div>
+    </div>
+
+    <div class="choose-box" onclick="activateBox(this)">
+      <div class="box-number">2</div>
+      <div class="box-content">
+        <strong>Because we've been there and done it.</strong>
+        <p>Years of experience building and launching successful brands.</p>
+      </div>
+    </div>
+
+    <div class="choose-box" onclick="activateBox(this)">
+      <div class="box-number">3</div>
+      <div class="box-content">
+        <strong>Because we're chosen by professionals.</strong>
+        <p>Trusted by agencies and startups globally for quality work.</p>
+      </div>
+    </div>
+
+    <div class="choose-box" onclick="activateBox(this)">
+      <div class="box-number">4</div>
+      <div class="box-content">
+        <strong>Because we know digital.</strong>
+        <p>SEO, design, and marketing knowledge to grow your business online.</p>
+      </div>
+    </div>
+
+    <div class="choose-box" onclick="activateBox(this)">
+      <div class="box-number">5</div>
+      <div class="box-content">
+        <strong>Because we’re cost-effective.</strong>
+        <p>Premium service without the crazy big agency prices.</p>
+      </div>
+    </div>
+
+    <div class="choose-box" onclick="activateBox(this)">
+      <div class="box-number">6</div>
+      <div class="box-content">
+        <strong>Because we understand your brand.</strong>
+        <p>Every design choice strengthens your unique identity.</p>
+      </div>
+    </div>
+
+    <div class="choose-box" onclick="activateBox(this)">
+      <div class="box-number">7</div>
+      <div class="box-content">
+        <strong>Because we’re easy to work with.</strong>
+        <p>Professional yet friendly, always making your journey smooth.</p>
+      </div>
+    </div>
+
+    <div class="choose-box" onclick="activateBox(this)">
+      <div class="box-number">8</div>
+      <div class="box-content">
+        <strong>Because we focus on results.</strong>
+        <p>Everything we do is aimed at delivering growth and success.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+
+
+
+<!-- Services Carousel Script -->
+
+
+<script>
+  const servicesCards = document.querySelectorAll("#services-carousel .carousel-card");
+  let serviceIndex = 0;
+  let serviceInterval;
+
+  function rotateServices() {
+    servicesCards.forEach(card => card.classList.remove("active", "next", "prev"));
+    servicesCards[serviceIndex].classList.add("active");
+    servicesCards[(serviceIndex + 1) % servicesCards.length].classList.add("next");
+    servicesCards[(serviceIndex + 2) % servicesCards.length].classList.add("prev");
+  }
+
+  function startServices() {
+    serviceInterval = setInterval(() => {
+      serviceIndex = (serviceIndex + 1) % servicesCards.length;
+      rotateServices();
+    }, 4000);
+  }
+
+  function stopServices() {
+    clearInterval(serviceInterval);
+  }
+
+  servicesCards.forEach((card, index) => {
+    card.addEventListener("mouseenter", () => {
+      stopServices();
+      serviceIndex = index;
+      rotateServices();
+    });
+    card.addEventListener("mouseleave", () => {
+      startServices();
+    });
+  });
+
+  rotateServices();
+  startServices();
+</script>
+
+<script>
+ function openSidebar() {
+  document.getElementById("sidebar").classList.add("sidebar-open");
+  document.getElementById("sidebarOverlay").style.display = "block";
+}
+
+function closeSidebar() {
+  document.getElementById("sidebar").classList.remove("sidebar-open");
+  document.getElementById("sidebarOverlay").style.display = "none";
+}
+
+</script>
+
+<script>
+  const modal = document.getElementById("serviceModal");
+  const closeButton = document.querySelector(".close-button");
+  const modalImage = document.getElementById("modalImage");
+  const popupLink = document.getElementById("popupLink");
+
+  const serviceDetails = {
+    webdesign: {
+      img: "images/ecommerce-vin-popup.png",
+      link: "ecommerce.html"
+    },
+    landingpage: {
+      img: "images/custom-websites-blue-popup.jpg",
+      link: "custom-websites.html"
+    },
+    branding: {
+      img: "images/landing-pages-green-popup.jpg",
+      link: "landing-pages.html"
+    }
+  };
+
+  document.querySelectorAll(".carousel-card").forEach(card => {
+    card.addEventListener("click", () => {
+      const key = card.getAttribute("data-service");
+      const detail = serviceDetails[key];
+      if (detail) {
+        modalImage.src = detail.img;
+        popupLink.href = detail.link;
+        modal.style.display = "flex";
+        document.body.classList.add("modal-open");
+      }
+    });
+  });
+
+  closeButton.addEventListener("click", () => {
+    modal.style.display = "none";
+    document.body.classList.remove("modal-open");
+  });
+
+  window.addEventListener("click", event => {
+    if (event.target === modal) {
+      modal.style.display = "none";
+      document.body.classList.remove("modal-open");
+    }
+  });
+</script>
+
+
+
+<script>
+
+const serviceDetails = {
+  webdesign: {
+    title: "Responsive Web Design",
+    description: "Detailed information about Responsive Web Design.",
+    link: "services.html#webdesign"
+  },
+  landingpage: {
+    title: "Landing Page Optimization",
+    description: "Detailed information about Landing Page Optimization.",
+    link: "services.html#landingpage"
+  },
+  branding: {
+    title: "Branding & Identity",
+    description: "Detailed information about Branding & Identity.",
+    link: "services.html#branding"
+  }
+};
+
+const learnMoreLink = document.getElementById("learnMoreLink");
+
+document.querySelectorAll(".carousel-card").forEach(card => {
+  card.addEventListener("click", () => {
+    const serviceKey = card.getAttribute("data-service");
+    const service = serviceDetails[serviceKey];
+    if (service) {
+      modalTitle.textContent = service.title;
+      modalDescription.textContent = service.description;
+      learnMoreLink.href = service.link;
+      modal.style.display = "block";
+      document.body.classList.add("modal-open");
+    }
+  });
+});
+</script>
+
+<script>
+  document.querySelectorAll('.carousel-card').forEach(card => {
+    let hoverTimer;
+
+    card.addEventListener('mouseenter', () => {
+      hoverTimer = setTimeout(() => {
+        card.classList.add('hover-expand');
+      }, 100); // 1.75 seconds
+    });
+
+    card.addEventListener('mouseleave', () => {
+      clearTimeout(hoverTimer);
+      card.classList.remove('hover-expand');
+    });
+  });
+</script>
+
+
+<div id="sidebarOverlay" class="sidebar-overlay" onclick="closeSidebar()"></div>
+
+<footer class="big-footer">
+  <div class="footer-container">
+    <!-- Column 1: Brand Info -->
+    <div class="footer-column">
+      <a href="index.html" class="logo">WebArrows</a>
+      <p>Here We Start The Future 🚀<br>Professional websites made easy.</p>
+    </div>
+
+    <!-- Column 2: Navigation Links -->
+    <div class="footer-column">
+      <h4>Explore</h4>
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="custom-websites.html">Custom Websites</a></li>
+        <li><a href="ecommerce.html">E-commerce</a></li>
+        <li><a href="landing-pages.html">Landing Pages</a></li>
+        <li><a href="offers.html">Offers</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </div>
+
+    <!-- Column 3: Payment Methods -->
+    <div class="footer-column">
+      <h4>Payment Methods</h4>
+      <div class="payment-logos">
+        <img src="images/fiverr.png" alt="Fiverr" />
+        <img src="images/upwork.png" alt="Upwork" />
+        <img src="images/payoneer.png" alt="Payoneer" />
+        <img src="images/stripe.png" alt="Stripe" />
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2025 WebArrows. All rights reserved.</p>
+  </div>
+</footer>
+
+
+<script>
+  function activateBox(clickedBox) {
+    document.querySelectorAll('.choose-box').forEach(box => {
+      box.classList.remove('active');
+    });
+    clickedBox.classList.add('active');
+  }
+  </script>
+  
+  
+  
+
+
+</body>
+</html>
