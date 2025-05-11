@@ -17,4 +17,9 @@ const submitRoute = require('./routes/submit');
 app.use('/submit', submitRoute);
 
 const PORT = process.env.PORT || 3000;
+
+app.get('/', (req, res) => {
+  res.send('✅ WebArrows backend is running!');
+});
+
 app.listen(PORT, () => console.log(`Server running at http://localhost:${PORT}`));
