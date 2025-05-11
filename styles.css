@@ -1173,6 +1173,7 @@ html {
 html {
   scroll-behavior: smooth;
 }
+<<<<<<< HEAD
 
 <style>
   .chat-form {
@@ -1206,3 +1207,5 @@ html {
     cursor: pointer;
   }
 </style>
+=======
+>>>>>>> 7dcbb1a396a2d7977e31851d9676243db70c1112

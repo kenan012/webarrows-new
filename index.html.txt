@@ -370,17 +370,6 @@ document.querySelectorAll(".carousel-card").forEach(card => {
 
 <div id="sidebarOverlay" class="sidebar-overlay" onclick="closeSidebar()"></div>
 
-<<<<<<< HEAD
-<div id="footer-placeholder"></div>
-<script>
-  fetch('footer.html')
-    .then(res => res.text())
-    .then(data => {
-      document.getElementById('footer-placeholder').outerHTML = data;
-    });
-</script>
-
-=======
 <footer class="big-footer">
   <div class="footer-container">
     <!-- Column 1: Brand Info -->
@@ -418,7 +407,6 @@ document.querySelectorAll(".carousel-card").forEach(card => {
     <p>© 2025 WebArrows. All rights reserved.</p>
   </div>
 </footer>
->>>>>>> 7dcbb1a396a2d7977e31851d9676243db70c1112
 
 
 <script>
@@ -436,7 +424,3 @@ document.querySelectorAll(".carousel-card").forEach(card => {
 
 </body>
 </html>
-  
-  
-
-
