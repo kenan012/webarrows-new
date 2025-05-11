@@ -3,270 +3,175 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>WebArrows - Mobile</title>
+  <title>WebArrows – Mobile</title>
+  <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <style>
     body {
+      background: #f4f4f4;
       font-family: 'Segoe UI', sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #f6f9ff;
-      color: #0a1d46;
     }
-
-    header {
+    .mobile-topbar {
       background: #0a1d46;
       color: white;
-      padding: 1rem;
-      text-align: center;
-      font-size: 1.5rem;
-      font-weight: bold;
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
-
-    .hero {
-      padding: 2.5rem 1rem 2rem;
-      text-align: center;
-      background: linear-gradient(135deg, #0a1d46, #233c67);
+    .mobile-sidebar {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 75%;
+      height: 100%;
+      background: #0a1d46;
+      color: white;
+      transition: right 0.3s ease;
+      padding: 2rem;
+      z-index: 9999;
+    }
+    .mobile-sidebar.open {
+      right: 0;
+    }
+    .sidebar-link {
+      display: block;
+      margin-bottom: 1.5rem;
+      font-size: 1.2rem;
       color: white;
     }
-    .hero h1 {
-      font-size: 2.1rem;
-      margin-bottom: 1rem;
-      animation: slideUp 0.6s ease-in-out;
-    }
-    .hero p {
-      font-size: 1rem;
-      margin-bottom: 1.5rem;
-      opacity: 0.85;
-    }
-    .hero a {
-      display: inline-block;
-      padding: 0.8rem 1.7rem;
-      background: linear-gradient(135deg, #ffffff, #e9e9e9);
-      color: #0a1d46;
-      border-radius: 30px;
-      font-weight: bold;
-      text-decoration: none;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-      transition: all 0.3s ease;
-    }
-    .hero a:hover {
-      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
-      transform: scale(1.05);
-    }
-
-    h2.section-title {
-      font-size: 1.4rem;
-      padding: 2rem 1rem 1rem;
+    .hero-mobile {
       text-align: center;
+      padding: 3rem 1rem 2rem;
+      background: url('images/hero-bg.jpg') center/cover no-repeat;
+      color: white;
     }
-
-    .carousel {
+    .hero-mobile h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    .hero-mobile p {
+      font-size: 1rem;
+    }
+    .hero-buttons {
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      align-items: center;
+    }
+    .hero-btn {
+      padding: 0.8rem 2rem;
+      border-radius: 30px;
+      font-weight: 600;
+      border: none;
+      color: white;
+      background: #244ca3;
+      width: 80%;
+      text-align: center;
+      text-decoration: none;
+    }
+    .hero-btn.outline {
+      background: white;
+      color: #0a1d46;
+      border: 2px solid #0a1d46;
+    }
+    .section {
+      padding: 2.5rem 1.5rem;
+      background: white;
+      margin-top: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+    .section h2 {
+      font-size: 1.6rem;
+      color: #0a1d46;
+      margin-bottom: 1rem;
+    }
+    .carousel-wrapper {
       display: flex;
       overflow-x: auto;
       scroll-snap-type: x mandatory;
       gap: 1rem;
+    }
+    .carousel-card {
+      flex: 0 0 80%;
+      background: #f1f1f1;
+      border-radius: 12px;
+      scroll-snap-align: start;
       padding: 1rem;
-      scroll-behavior: smooth;
     }
-    .carousel::-webkit-scrollbar {
-      height: 6px;
-    }
-    .carousel::-webkit-scrollbar-thumb {
-      background: #c3c3c3;
-      border-radius: 3px;
-    }
-    .card {
-      flex: 0 0 70%;
-      background: white;
-      border-radius: 16px;
-      overflow: hidden;
-      scroll-snap-align: center;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-      position: relative;
-      cursor: pointer;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .card:hover {
-      transform: scale(1.03);
-      box-shadow: 0 12px 30px rgba(0,0,0,0.2);
-    }
-    .card img {
-      width: 100%;
-      height: 240px;
-      object-fit: cover;
-      border-bottom: 1px solid #eee;
-    }
-    .card h3 {
-      padding: 1rem;
-      margin: 0;
-      font-size: 1.1rem;
-      color: #0a1d46;
-      text-align: center;
-    }
-
-    footer {
-      background: #0a1d46;
-      color: white;
-      text-align: center;
+    .footer {
       padding: 2rem 1rem;
+      text-align: center;
+      color: #aaa;
       font-size: 0.9rem;
-    }
-
-    /* MODAL */
-    .modal {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      backdrop-filter: blur(10px);
-      background-color: rgba(0, 0, 0, 0.5);
-      justify-content: center;
-      align-items: center;
-      z-index: 1000;
-    }
-    .modal-content {
-      max-width: 95%;
-      max-height: 85vh;
-      border-radius: 16px;
-      overflow: hidden;
-      background: rgba(255, 255, 255, 0.95);
-      position: relative;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.4);
-      animation: fadeIn 0.3s ease-in-out;
-    }
-    .modal img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-    .modal .close-button {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      font-size: 2rem;
-      color: #0a1d46;
-      cursor: pointer;
-      z-index: 1001;
-    }
-
-    @keyframes slideUp {
-      from {
-        transform: translateY(20px);
-        opacity: 0;
-      }
-      to {
-        transform: translateY(0);
-        opacity: 1;
-      }
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: scale(0.95);
-      }
-      to {
-        opacity: 1;
-        transform: scale(1);
-      }
-    }
-
-    /* STICKY CTA */
-    .sticky-cta {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: linear-gradient(to right, #0a1d46, #233c67);
-      color: white;
-      padding: 0.8rem 1.3rem;
-      border-radius: 50px;
-      font-size: 0.9rem;
-      font-weight: bold;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
-      z-index: 1002;
-      text-decoration: none;
     }
   </style>
 </head>
 <body>
-  <header>WebArrows</header>
 
-  <section class="hero">
-    <h1>Future-Ready Websites</h1>
-    <p>Fast, clean, and custom-built for your brand.</p>
-    <a href="https://fiverr.com/kenan_jg">Start on Fiverr</a>
-  </section>
+  <!-- Mobile Top Bar -->
+  <div class="mobile-topbar">
+    <a href="index.html" style="color:white; font-weight:bold; font-size:1.3rem;">WebArrows</a>
+    <i class="fas fa-bars" onclick="toggleSidebar()"></i>
+  </div>
 
-  <h2 class="section-title">🔥 Featured Offers</h2>
-  <div class="carousel">
-    <div class="card" onclick="openModal('images/Offer-1.jpg', 'custom-websites.html')">
-      <img src="images/Offer-1.jpg" alt="Offer 1">
-      <h3>Custom Website</h3>
-    </div>
-    <div class="card" onclick="openModal('images/Offer-2.jpg', 'ecommerce.html')">
-      <img src="images/Offer-2.jpg" alt="Offer 2">
-      <h3>E-commerce Setup</h3>
-    </div>
-    <div class="card" onclick="openModal('images/Offer-3.jpg', 'landing-pages.html')">
-      <img src="images/Offer-3.jpg" alt="Offer 3">
-      <h3>Landing Pages</h3>
+  <!-- Sidebar -->
+  <div class="mobile-sidebar" id="mobileSidebar">
+    <a href="index.html" class="sidebar-link">Home</a>
+    <a href="index.html#whychoose" class="sidebar-link">Why Choose Us</a>
+    <a href="custom-websites.html" class="sidebar-link">Custom Websites</a>
+    <a href="ecommerce.html" class="sidebar-link">E-Commerce</a>
+    <a href="landing-pages.html" class="sidebar-link">Landing Pages</a>
+    <a href="contact.html" class="sidebar-link">Contact Us</a>
+    <a href="chat.html" class="sidebar-link">💬 Chat With Us</a>
+  </div>
+
+  <!-- Hero -->
+  <div class="hero-mobile">
+    <h1>Let's Build<br>Your Dream Website</h1>
+    <p>Fast, modern & affordable</p>
+    <div class="hero-buttons">
+      <a href="https://fiverr.com" class="hero-btn" target="_blank">Order on Fiverr</a>
+      <a href="https://upwork.com" class="hero-btn outline" target="_blank">Hire on Upwork</a>
+      <a href="#services" class="hero-btn">Choose a Service</a>
     </div>
   </div>
 
-  <h2 class="section-title">🚀 Our Services</h2>
-  <div class="carousel">
-    <div class="card" onclick="openModal('images/ecommerce-vin.jpg', 'ecommerce.html')">
-      <img src="images/ecommerce-vin.jpg" alt="E-commerce">
-      <h3>E-commerce Development</h3>
-    </div>
-    <div class="card" onclick="openModal('images/custom_dev_blue_theme.jpg', 'custom-websites.html')">
-      <img src="images/custom_dev_blue_theme.jpg" alt="Web Dev">
-      <h3>Web Development</h3>
-    </div>
-    <div class="card" onclick="openModal('images/landing_pages_funnels.jpg', 'landing-pages.html')">
-      <img src="images/landing_pages_funnels.jpg" alt="Landing Pages">
-      <h3>Landing Pages</h3>
-    </div>
-  </div>
-
-  <div class="modal" id="previewModal" onclick="handleOutsideClick(event)">
-    <span class="close-button" onclick="closeModal()">&times;</span>
-    <div class="modal-content" onclick="event.stopPropagation();">
-      <a id="modalLink" href="#" target="_self">
-        <img id="modalImage" src="" alt="Popup Image">
-      </a>
+  <!-- Services Section -->
+  <div class="section" id="services">
+    <h2>Our Services</h2>
+    <div class="carousel-wrapper">
+      <div class="carousel-card">
+        <h3>Custom Websites</h3>
+        <p>Tailored sites that convert</p>
+      </div>
+      <div class="carousel-card">
+        <h3>E-Commerce</h3>
+        <p>Launch your online store fast</p>
+      </div>
+      <div class="carousel-card">
+        <h3>Landing Pages</h3>
+        <p>1-page funnels that drive action</p>
+      </div>
     </div>
   </div>
 
-  <a class="sticky-cta" href="https://fiverr.com/kenan_jg">🚀 Start Now</a>
-
-  <footer>
-    WebArrows &copy; 2025<br>
-    Mobile Edition — Built for conversion.
-  </footer>
+  <!-- Footer -->
+  <div class="footer">
+    © 2025 WebArrows. All rights reserved.
+  </div>
 
   <script>
-    function openModal(imgSrc, linkHref) {
-      const modal = document.getElementById("previewModal");
-      const modalImg = document.getElementById("modalImage");
-      const modalLink = document.getElementById("modalLink");
-      modalImg.src = imgSrc;
-      modalLink.href = linkHref;
-      modal.style.display = "flex";
-    }
-
-    function closeModal() {
-      document.getElementById("previewModal").style.display = "none";
-    }
-
-    function handleOutsideClick(event) {
-      if (!event.target.closest('.modal-content')) {
-        closeModal();
-      }
+    function toggleSidebar() {
+      const sidebar = document.getElementById('mobileSidebar');
+      sidebar.classList.toggle('open');
     }
   </script>
+
 </body>
 </html>

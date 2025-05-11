@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>PAGE TITLE HERE</title> <!-- Each page can have its own title -->
+    <div id="head-placeholder"></div>
+  </head>
+  
+  <script>
+  fetch('head.html')
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById('head-placeholder').outerHTML = data;
+    });
+  </script>
+  
+</head>
+<body>
+  <div id="navbar-placeholder"></div>
+
+<script>
+fetch('navbar.html')
+  .then(response => response.text())
+  .then(data => {
+    document.getElementById('navbar-placeholder').outerHTML = data;
+  });
+</script>
+
+
+  <main style="text-align: center; padding: 4rem 1rem;">
+    <h1>🎉 Thank You!</h1>
+    <p>Your order has been received. We’ll be in touch shortly.</p>
+    <a href="index.html" class="button glow-on-hover" style="margin-top: 2rem;">Back to Home</a>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 WebArrows</p>
+  </footer>
+</body>
+</html>

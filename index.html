@@ -6,34 +6,38 @@
   <title>WebArrows - Home</title>
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <script>
+    if (window.innerWidth <= 768) {
+      window.location.href = "mobile.html";
+    }
+  </script>
 </head>
 <body>
-<div class="sidebar" id="sidebar">
-  <a href="index.html"><i class="fas fa-home"></i> Home</a>
-  <a href="custom-websites.html"><i class="fas fa-briefcase"></i> Custom Website </a>
-  <a href="ecommerce.html"><i class="fas fa-briefcase"></i> E-commerce </a>
-  <a href="landing-pages.html"><i class="fas fa-briefcase"></i> Landing Pages </a>
-  <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
-  <a href="#" onclick="closeSidebar()"><i class="fas fa-times"></i> Close</a>
-</div>
+  <div id="navbar-placeholder"></div>
 
-<header class="header">
-  <a href="index.html" class="logo">WebArrows</a>
-  <div class="top-right">
-    <div class="language-switcher">EN | AR</div>
-    <div class="menu-toggle" onclick="openSidebar()"><i class="fas fa-bars"></i></div>
-  </div>
-</header>
+  <script>
+  fetch('navbar.html')
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById('navbar-placeholder').outerHTML = data;
+    });
+  </script>
+  
+
+
 
 <section class="hero-code">
   <div class="hero-text">
-    <h1>Future-Ready<br>Websites for You</h1>
+    <h1>Future-Ready<br>Build Your Website</h1>
     <p>Clean, professional websites built<br>in volt speed.</p>
-    <a href="https://fiverr.com/kenan_jg" class="button glow-on-hover">Start on Fiverr</a>
+    <a href="https://fiverr.com" target="_blank" class="hero-btn">Fiverr</a>
+  <a href="https://upwork.com" target="_blank" class="hero-btn">Upwork</a>
+  <a href="#services" class="hero-btn primary">Choose Your Website</a>
   </div>
 </section>
+
 <section class="offers-slider">
-  <h2>🔥 Featured Offers</h2>
+  <h2>What We Deliver</h2>
   <div class="carousel" id="offers-carousel">
     <div class="carousel-card active"><img src="images/Offer-1.jpg" alt="Offer 1"></div>
     <div class="carousel-card next"><img src="images/Offer-2.jpg" alt="Offer 2"></div>
@@ -42,13 +46,12 @@
 </section>
 
 
-<section class="home-services">
-  <h2>🚀 Our Services</h2>
+<section id="services" class="home-services">
+  <h2>Our Services</h2>
   <div class="carousel" id="services-carousel">
     <div class="carousel-card active" data-service="webdesign">
       <div class="card-image" style="background-image: url('images/ecommerce-vin.jpg');">
         <div class="card-overlay">
-          <h3 class="card-title">E-commerce Solutions</h3>
         </div>
       </div>
     </div>
@@ -57,7 +60,6 @@
        <div class="carousel-card next" data-service="landingpage">
         <div class="card-image" style="background-image: url('images/custom_dev_blue_theme.jpg');">
           <div class="card-overlay">
-            <h3 class="card-title">Web Development</h3>
           </div>
         </div>
       </div>
@@ -66,7 +68,6 @@
     <div class="carousel-card prev" data-service="branding">
       <div class="card-image" style="background-image: url('images/landing_pages_funnels.jpg');">
         <div class="card-overlay">
-          <h3 class="card-title">Creative Landing Pages</h3>
         </div>
       </div>
     </div>
@@ -129,6 +130,85 @@
   rotateOffers();
   startOffers();
 </script>
+
+<!-- Why Choose Us (benefits)	 and Our Process (steps) -->
+
+<section id="whychoose" class="split-cards-section">
+  <h2 class="section-title">Why Choose Us?</h2>
+  <p class="section-subtitle">A few good reasons to work with WebArrows.</p>
+
+  <div class="cards-container">
+  <div class="choose-grid">
+    <div class="choose-box" onclick="activateBox(this)">
+      <div class="box-number">1</div>
+      <div class="box-content">
+        <strong>Because we'll make you more money.</strong>
+        <p>Customer-focused designs that convert and generate real sales.</p>
+      </div>
+    </div>
+
+    <div class="choose-box" onclick="activateBox(this)">
+      <div class="box-number">2</div>
+      <div class="box-content">
+        <strong>Because we've been there and done it.</strong>
+        <p>Years of experience building and launching successful brands.</p>
+      </div>
+    </div>
+
+    <div class="choose-box" onclick="activateBox(this)">
+      <div class="box-number">3</div>
+      <div class="box-content">
+        <strong>Because we're chosen by professionals.</strong>
+        <p>Trusted by agencies and startups globally for quality work.</p>
+      </div>
+    </div>
+
+    <div class="choose-box" onclick="activateBox(this)">
+      <div class="box-number">4</div>
+      <div class="box-content">
+        <strong>Because we know digital.</strong>
+        <p>SEO, design, and marketing knowledge to grow your business online.</p>
+      </div>
+    </div>
+
+    <div class="choose-box" onclick="activateBox(this)">
+      <div class="box-number">5</div>
+      <div class="box-content">
+        <strong>Because we’re cost-effective.</strong>
+        <p>Premium service without the crazy big agency prices.</p>
+      </div>
+    </div>
+
+    <div class="choose-box" onclick="activateBox(this)">
+      <div class="box-number">6</div>
+      <div class="box-content">
+        <strong>Because we understand your brand.</strong>
+        <p>Every design choice strengthens your unique identity.</p>
+      </div>
+    </div>
+
+    <div class="choose-box" onclick="activateBox(this)">
+      <div class="box-number">7</div>
+      <div class="box-content">
+        <strong>Because we’re easy to work with.</strong>
+        <p>Professional yet friendly, always making your journey smooth.</p>
+      </div>
+    </div>
+
+    <div class="choose-box" onclick="activateBox(this)">
+      <div class="box-number">8</div>
+      <div class="box-content">
+        <strong>Because we focus on results.</strong>
+        <p>Everything we do is aimed at delivering growth and success.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+
+
 
 <!-- Services Carousel Script -->
 
@@ -289,6 +369,30 @@ document.querySelectorAll(".carousel-card").forEach(card => {
 
 
 <div id="sidebarOverlay" class="sidebar-overlay" onclick="closeSidebar()"></div>
+
+<div id="footer-placeholder"></div>
+<script>
+  fetch('footer.html')
+    .then(res => res.text())
+    .then(data => {
+      document.getElementById('footer-placeholder').outerHTML = data;
+    });
+</script>
+
+
+
+<script>
+  function activateBox(clickedBox) {
+    document.querySelectorAll('.choose-box').forEach(box => {
+      box.classList.remove('active');
+    });
+    clickedBox.classList.add('active');
+  }
+  </script>
+  
+  
+  
+
 
 </body>
 </html>
