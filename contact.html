@@ -1,49 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>WebArrows - Services</title>
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <title>PAGE TITLE HERE</title> <!-- Each page can have its own title -->
+    <div id="head-placeholder"></div>
+  </head>
+  
+  <script>
+  fetch('head.html')
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById('head-placeholder').outerHTML = data;
+    });
+  </script>
+  
 </head>
 <body>
 
   <!-- Sidebar Navigation -->
-<div class="sidebar" id="sidebar">
-  <a href="index.html"><i class="fas fa-home"></i> Home</a>
-  <a href="services.html"><i class="fas fa-briefcase"></i> Services</a>
-  <a href="contact.html"><i class="fas fa-envelope"></i> Contact</a>
-  <a href="blog.html"><i class="fas fa-newspaper"></i> Blog</a>
-  <a href="#" onclick="closeSidebar()"><i class="fas fa-times"></i> Close</a>
-</div>
+  <div id="navbar-placeholder"></div>
 
-<!-- Header -->
-<header class="header">
-  <div class="logo">WebArrows</div>
-  <div class="top-right">
-    <div class="language-switcher">EN | AR</div>
-    <div class="menu-toggle" onclick="openSidebar()"><i class="fas fa-bars"></i></div>
-  </div>
-</header>
-
-  <!-- Sidebar Navigation -->
-  <div class="sidebar" id="sidebar">
-    <a href="index.html">🏠 Home</a>
-    <a href="services.html">🛠 Services</a>
-    <a href="contact.html">📬 Contact</a>
-    <a href="blog.html">📰 Blog</a>
-    <a href="#" onclick="closeSidebar()">❌ Close</a>
-  </div>
-
-  <!-- Header -->
-  <header class="header">
-    <div class="logo">WebArrows</div>
-    <div class="top-right">
-      <div class="language-switcher">EN | AR</div>
-      <div class="menu-toggle" onclick="openSidebar()">☰</div>
-    </div>
-  </header>
+<script>
+fetch('navbar.html')
+  .then(response => response.text())
+  .then(data => {
+    document.getElementById('navbar-placeholder').outerHTML = data;
+  });
+</script>
 
   <!-- Hero Section -->
   <section class="hero-code">
@@ -53,6 +35,13 @@
     </div>
   </section>
 
+  <section class="service-cta">
+    <div class="cta-buttons" style="text-align:center; margin-top: 3rem;">
+      <a href="chat.html" class="button glow-on-hover">💬 Talk to Us</a>
+      <a href="payment.html" class="button glow-on-hover" style="margin-left: 20px;">🚀 Get Your Website</a>
+    </div>
+  </section>
+  
   <!-- Services Stack -->
   <main class="service-stack">
 
@@ -172,6 +161,9 @@
       document.getElementById("sidebar").classList.remove("sidebar-open");
     }
   </script>
+
+
+
 
 </body>
 </html>
