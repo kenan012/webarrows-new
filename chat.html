@@ -290,19 +290,19 @@
 
   const payload = { name, phone, country, service, answers };
 
-  fetch('http://localhost:3000/submit', {
+  fetch('https://<your-render-app>.onrender.com/submit', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload)
   })
   .then(res => res.json())
   .then(data => {
-    alert("Submitted successfully!");
+    alert("✅ Submitted successfully!");
     closePopup();
   })
   .catch(err => {
     console.error(err);
-    alert("Submission failed.");
+    alert("❌ Submission failed.");
   });
 }
 
